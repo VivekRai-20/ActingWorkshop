@@ -9,34 +9,55 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 222 84% 5%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 84% 5%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 222 84% 5%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 214 100% 20%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 214 20% 95%;
+    --secondary-foreground: 214 100% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 214 20% 95%;
+    --muted-foreground: 214 16% 47%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 214 100% 92%;
+    --accent-foreground: 214 100% 20%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 214 100% 20%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Acting Workshop Theme Colors */
+    --navy-primary: 214 100% 20%;
+    --navy-secondary: 214 80% 35%;
+    --navy-light: 214 50% 85%;
+    --white-pure: 0 0% 100%;
+    --white-soft: 214 20% 98%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--navy-primary)), hsl(var(--navy-secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--navy-primary)) 0%, hsl(var(--navy-secondary)) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--white-pure)), hsl(var(--white-soft)));
+
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--navy-primary) / 0.15);
+    --shadow-glow: 0 0 40px hsl(var(--navy-secondary) / 0.2);
+    --shadow-card: 0 4px 20px hsl(var(--navy-primary) / 0.1);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +122,81 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Animation Classes */
+@layer components {
+  .animate-fade-in {
+    @apply opacity-0 translate-y-4;
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    @apply opacity-0 translate-y-8;
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    @apply scale-95 opacity-0;
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-2;
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-primary:hover {
+    @apply -translate-y-1 scale-105;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary border-2 border-primary px-8 py-4 rounded-xl font-semibold;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-secondary:hover {
+    @apply bg-primary text-white -translate-y-1;
+  }
+
+  .card-elegant {
+    @apply bg-white rounded-2xl p-8;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+  }
+
+  .card-elegant:hover {
+    box-shadow: var(--shadow-elegant);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+@keyframes slideUp {
+  to {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+@keyframes scaleIn {
+  to {
+    @apply scale-100 opacity-100;
   }
 }
