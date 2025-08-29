@@ -97,12 +97,56 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        {/* Student Testimonials */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {testimonials.map((testimonial, index) => (
+        {/* Student Problem Screenshots */}
+        <div className="mb-20">
+          <h3 className="text-3xl font-bold text-center text-white mb-12">
+            <span className="text-red-400">Before:</span> Common Acting Problems Our Students Faced
+          </h3>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <Card className="glow-border bg-red-900/10 backdrop-blur-sm border-red-500/30 p-6 animate-scale-in">
+              <div className="text-center">
+                <div className="bg-red-500/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">😰</span>
+                </div>
+                <h4 className="text-white font-semibold mb-2">Stage Fear Problem</h4>
+                <p className="text-white/70 text-sm">Screenshot: Student freezing during audition</p>
+              </div>
+            </Card>
+            
+            <Card className="glow-border bg-red-900/10 backdrop-blur-sm border-red-500/30 p-6 animate-scale-in">
+              <div className="text-center">
+                <div className="bg-red-500/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🎭</span>
+                </div>
+                <h4 className="text-white font-semibold mb-2">Overacting Issues</h4>
+                <p className="text-white/70 text-sm">Screenshot: Unnatural expressions</p>
+              </div>
+            </Card>
+            
+            <Card className="glow-border bg-red-900/10 backdrop-blur-sm border-red-500/30 p-6 animate-scale-in">
+              <div className="text-center">
+                <div className="bg-red-500/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">😑</span>
+                </div>
+                <h4 className="text-white font-semibold mb-2">Flat Dialogue Delivery</h4>
+                <p className="text-white/70 text-sm">Screenshot: Monotone speech patterns</p>
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        {/* Student Success Stories */}
+        <div className="mb-20">
+          <h3 className="text-3xl font-bold text-center text-white mb-12">
+            <span className="text-green-400">After:</span> Student Success Stories
+          </h3>
+          
+           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
             <Card 
               key={index}
-              className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift shadow-dark-glow animate-scale-in p-6"
+              className="glow-border bg-green-900/10 backdrop-blur-sm border-green-500/30 hover-lift shadow-dark-glow animate-scale-in p-6"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-center mb-4">
@@ -144,20 +188,21 @@ const TestimonialsSection = () => {
                 <p className="text-sm text-white/70">{testimonial.age} • {testimonial.location}</p>
               </div>
             </Card>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* Professional Testimonials */}
+        {/* Professional Video Testimonials */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-center text-white mb-12">
-            Industry <span className="text-navy-light">Professionals</span> Recommend Us
+            Industry <span className="text-navy-light">Professionals</span> Video Testimonials
           </h3>
           
           <div className="grid md:grid-cols-3 gap-8">
             {professionalTestimonials.map((testimonial, index) => (
               <Card 
                 key={index}
-                className="card-elegant p-6 bg-gradient-primary text-white animate-fade-in"
+                className="glow-border bg-gradient-neon-glow p-6 text-white animate-fade-in"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="flex items-center mb-4">
@@ -166,13 +211,34 @@ const TestimonialsSection = () => {
                   ))}
                 </div>
                 
+                {/* Video Placeholder */}
+                <div className="mb-4">
+                  <div 
+                    className="relative bg-navy-primary/20 rounded-lg p-8 cursor-pointer hover:bg-navy-primary/30 transition-colors glow-border"
+                    onClick={() => setActiveVideo(activeVideo === (index + 100) ? null : (index + 100))}
+                  >
+                    <div className="flex items-center justify-center">
+                      <Play className="h-12 w-12 text-white mr-2" />
+                      <span className="text-white font-semibold text-lg">
+                        {activeVideo === (index + 100) ? "Playing..." : "Watch Professional Testimonial"}
+                      </span>
+                    </div>
+                    {activeVideo === (index + 100) && (
+                      <div className="mt-4 text-center">
+                        <Volume2 className="h-6 w-6 text-navy-light inline mr-2" />
+                        <span className="text-navy-light">Professional testimonial playing</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
                 <Quote className="h-6 w-6 text-navy-light mb-4" />
                 
-                <p className="text-navy-light mb-6 leading-relaxed">
+                <p className="text-white/90 mb-6 leading-relaxed">
                   "{testimonial.message}"
                 </p>
                 
-                <div className="border-t border-navy-light/20 pt-4">
+                <div className="border-t border-white/20 pt-4">
                   <h4 className="font-semibold text-white">{testimonial.name}</h4>
                   <p className="text-sm text-navy-light">{testimonial.designation}</p>
                 </div>
@@ -183,16 +249,16 @@ const TestimonialsSection = () => {
 
         {/* CTA Section */}
         <div className="text-center">
-          <Card className="bg-gradient-dark-glow p-8 shadow-dark-glow max-w-4xl mx-auto border border-white/10">
+          <Card className="glow-border bg-gradient-neon-glow p-8 shadow-intense-glow max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-white mb-4">
               Join Our Success Stories
             </h3>
-            <p className="text-xl text-white/80 mb-6">
+            <p className="text-xl text-white/90 mb-6">
               Don't just dream about acting — start your journey with proven methods and expert guidance.
             </p>
             <Button 
               onClick={handleJoinWorkshop}
-              className="btn-primary text-lg px-8 py-4"
+              className="btn-primary text-lg px-8 py-4 glow-border"
             >
               Start Your Acting Journey
             </Button>
