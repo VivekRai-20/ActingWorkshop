@@ -52,13 +52,13 @@ const WorkshopContent = () => {
   ];
 
   return (
-    <section id="workshop" className="py-20 bg-gradient-subtle">
-      <div className="container mx-auto px-6">
+    <section id="workshop" className="py-20 dark-section relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-            What You'll Learn in This <span className="text-navy-secondary">3-Day Workshop</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            What You'll Learn in This <span className="text-navy-light">3-Day Workshop</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
             Each skill targets the exact challenges aspiring actors face. No fluff, just results.
           </p>
         </div>
@@ -69,7 +69,7 @@ const WorkshopContent = () => {
             return (
               <Card 
                 key={index}
-                className="card-elegant hover-lift animate-scale-in p-8"
+                className="glow-border bg-white/5 backdrop-blur-sm hover-lift animate-scale-in p-8"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start space-x-4">
@@ -77,10 +77,10 @@ const WorkshopContent = () => {
                     <IconComponent className="h-6 w-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-primary mb-3">
+                    <h3 className="text-xl font-bold text-white mb-3">
                       {point.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-white/80 leading-relaxed">
                       {point.description}
                     </p>
                   </div>
@@ -92,9 +92,7 @@ const WorkshopContent = () => {
 
         {/* CTA Section */}
         <div className="text-center">
-          <div className="bg-gradient-dark-glow p-8 rounded-2xl text-white max-w-4xl mx-auto shadow-dark-glow border border-white/10 relative overflow-hidden">
-            {/* Inner glow effect */}
-            <div className="absolute inset-0 bg-gradient-radial-glow opacity-30"></div>
+          <div className="glow-border bg-gradient-neon-glow p-8 rounded-2xl text-white max-w-4xl mx-auto relative overflow-hidden">
             <div className="relative z-10">
               <h3 className="text-3xl font-bold mb-4">
                 Ready to Transform Your Acting Skills?
@@ -104,7 +102,7 @@ const WorkshopContent = () => {
               </p>
               <Button 
                 onClick={handleJoinWorkshop}
-                className="bg-white text-primary hover:bg-navy-light hover:text-white text-lg px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-glow"
+                className="btn-primary text-lg px-8 py-4 glow-border"
               >
                 Secure Your Spot Now
               </Button>

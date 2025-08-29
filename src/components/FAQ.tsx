@@ -66,89 +66,64 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-gradient-subtle">
-      <div className="container mx-auto px-6">
+    <section id="faq" className="py-20 dark-section relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-            Frequently Asked <span className="text-navy-secondary">Questions</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Frequently Asked <span className="text-navy-light">Questions</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
             Get clarity on everything you need to know about the workshop.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="max-w-4xl mx-auto">
           {/* FAQ Accordion */}
-          <div className="animate-fade-in">
-            <Card className="card-elegant p-8">
-              <div className="flex items-center mb-6">
-                <HelpCircle className="h-8 w-8 text-primary mr-3" />
-                <h3 className="text-2xl font-bold text-primary">Common Questions</h3>
-              </div>
-              
-              <Accordion type="single" collapsible className="w-full">
-                {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left font-semibold text-primary hover:text-navy-secondary">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </Card>
-          </div>
+          <Card className="glow-border bg-white/5 backdrop-blur-sm p-8 animate-fade-in">
+            <div className="flex items-center mb-6">
+              <HelpCircle className="h-8 w-8 text-navy-light mr-3" />
+              <h3 className="text-2xl font-bold text-white">Common Questions</h3>
+            </div>
+            
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`} className="border-white/10">
+                  <AccordionTrigger className="text-left font-semibold text-white hover:text-navy-light">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-white/80 leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </Card>
 
-          {/* Who Should NOT Join */}
-          <div className="space-y-8">
-            <Card className="card-elegant p-8 animate-scale-in">
-              <h3 className="text-2xl font-bold text-primary mb-6">
-                Who Should <span className="text-red-500">NOT</span> Join This Workshop
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                This workshop is NOT for you if:
-              </p>
-              <div className="space-y-4">
-                {notForYou.map((item, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <div className="bg-red-100 p-1 rounded-full mt-1">
-                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    </div>
-                    <p className="text-muted-foreground">{item}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6 p-4 bg-primary/5 rounded-lg">
-                <p className="text-primary font-semibold">
-                  This workshop is designed for serious learners who truly want to grow their acting skills 
-                  and are ready to invest their focus and energy for 3 days.
-                </p>
-              </div>
-            </Card>
-
-            <Card className="card-elegant p-8 bg-gradient-primary text-white">
-              <h3 className="text-2xl font-bold mb-4">Ready to Begin?</h3>
-              <p className="text-navy-light mb-6">
+          {/* CTA Section */}
+          <div className="mt-16 text-center">
+            <Card className="glow-border bg-gradient-neon-glow p-8">
+              <h3 className="text-2xl font-bold text-white mb-4">Ready to Begin?</h3>
+              <p className="text-white/90 mb-6">
                 If you're passionate about acting and ready to learn, join hundreds of students 
                 who've transformed their skills with our proven method.
               </p>
-              <div className="flex items-center mb-6">
-                <CheckCircle className="h-5 w-5 text-navy-light mr-2" />
-                <span className="text-navy-light">3-Day Intensive Training</span>
-              </div>
-              <div className="flex items-center mb-6">
-                <CheckCircle className="h-5 w-5 text-navy-light mr-2" />
-                <span className="text-navy-light">Personal Feedback from Expert</span>
-              </div>
-              <div className="flex items-center mb-6">
-                <CheckCircle className="h-5 w-5 text-navy-light mr-2" />
-                <span className="text-navy-light">Official Certification</span>
+              <div className="flex flex-wrap justify-center gap-6 mb-8">
+                <div className="flex items-center text-white">
+                  <CheckCircle className="h-5 w-5 text-navy-light mr-2" />
+                  <span>3-Day Intensive Training</span>
+                </div>
+                <div className="flex items-center text-white">
+                  <CheckCircle className="h-5 w-5 text-navy-light mr-2" />
+                  <span>Personal Feedback from Expert</span>
+                </div>
+                <div className="flex items-center text-white">
+                  <CheckCircle className="h-5 w-5 text-navy-light mr-2" />
+                  <span>Official Certification</span>
+                </div>
               </div>
               <Button 
                 onClick={handleJoinWorkshop}
-                className="bg-white text-primary hover:bg-navy-light hover:text-primary w-full text-lg py-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+                className="btn-primary text-lg py-3 px-8 glow-border"
               >
                 Enroll in Workshop Now
               </Button>
