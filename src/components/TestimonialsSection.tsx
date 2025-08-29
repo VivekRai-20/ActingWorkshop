@@ -84,13 +84,15 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="testimonials" className="py-20 bg-gradient-dark relative overflow-hidden">
+      {/* Background glow effect */}
+      <div className="absolute inset-0 bg-gradient-radial-glow opacity-60"></div>
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-            What Our <span className="text-navy-secondary">Students Say</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            What Our <span className="text-navy-light">Students Say</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
             Real stories from aspiring actors whose dreams became reality after just 3 days.
           </p>
         </div>
@@ -100,7 +102,7 @@ const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => (
             <Card 
               key={index}
-              className="card-elegant hover-lift animate-scale-in p-6"
+              className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift shadow-dark-glow animate-scale-in p-6"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-center mb-4">
@@ -111,7 +113,7 @@ const TestimonialsSection = () => {
               
               <Quote className="h-8 w-8 text-navy-light mb-4" />
               
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-white/90 mb-6 leading-relaxed">
                 {testimonial.message}
               </p>
               
@@ -138,8 +140,8 @@ const TestimonialsSection = () => {
               )}
               
               <div className="border-t border-border pt-4">
-                <h4 className="font-semibold text-primary">{testimonial.name}</h4>
-                <p className="text-sm text-muted-foreground">{testimonial.age} • {testimonial.location}</p>
+                <h4 className="font-semibold text-navy-light">{testimonial.name}</h4>
+                <p className="text-sm text-white/70">{testimonial.age} • {testimonial.location}</p>
               </div>
             </Card>
           ))}
@@ -147,8 +149,8 @@ const TestimonialsSection = () => {
 
         {/* Professional Testimonials */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-center text-primary mb-12">
-            Industry <span className="text-navy-secondary">Professionals</span> Recommend Us
+          <h3 className="text-3xl font-bold text-center text-white mb-12">
+            Industry <span className="text-navy-light">Professionals</span> Recommend Us
           </h3>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -181,11 +183,11 @@ const TestimonialsSection = () => {
 
         {/* CTA Section */}
         <div className="text-center">
-          <Card className="card-elegant p-8 bg-gradient-subtle max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-primary mb-4">
+          <Card className="bg-gradient-dark-glow p-8 shadow-dark-glow max-w-4xl mx-auto border border-white/10">
+            <h3 className="text-3xl font-bold text-white mb-4">
               Join Our Success Stories
             </h3>
-            <p className="text-xl text-muted-foreground mb-6">
+            <p className="text-xl text-white/80 mb-6">
               Don't just dream about acting — start your journey with proven methods and expert guidance.
             </p>
             <Button 

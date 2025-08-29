@@ -8,8 +8,11 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-primary text-white">
-      <div className="container mx-auto px-6 py-16">
+    <footer className="bg-gradient-dark relative overflow-hidden">
+      {/* Background glow effect */}
+      <div className="absolute inset-0 bg-gradient-radial-glow opacity-40"></div>
+      <div className="py-16 text-white relative z-10">
+        <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">
@@ -121,6 +124,7 @@ const Footer = () => {
             <span className="mx-2">Privacy Policy</span> | 
             <span className="mx-2">Terms of Service</span>
           </p>
+         </div>
         </div>
       </div>
     </footer>

@@ -92,19 +92,23 @@ const WorkshopContent = () => {
 
         {/* CTA Section */}
         <div className="text-center">
-          <div className="bg-gradient-primary p-8 rounded-2xl text-white max-w-4xl mx-auto shadow-glow">
-            <h3 className="text-3xl font-bold mb-4">
-              Ready to Transform Your Acting Skills?
-            </h3>
-            <p className="text-xl text-navy-light mb-6">
-              Join hundreds of aspiring actors who've discovered their potential through our proven method.
-            </p>
-            <Button 
-              onClick={handleJoinWorkshop}
-              className="bg-white text-primary hover:bg-navy-light hover:text-primary text-lg px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
-            >
-              Secure Your Spot Now
-            </Button>
+          <div className="bg-gradient-dark-glow p-8 rounded-2xl text-white max-w-4xl mx-auto shadow-dark-glow border border-white/10 relative overflow-hidden">
+            {/* Inner glow effect */}
+            <div className="absolute inset-0 bg-gradient-radial-glow opacity-30"></div>
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold mb-4">
+                Ready to Transform Your Acting Skills?
+              </h3>
+              <p className="text-xl text-white/90 mb-6">
+                Join hundreds of aspiring actors who've discovered their potential through our proven method.
+              </p>
+              <Button 
+                onClick={handleJoinWorkshop}
+                className="bg-white text-primary hover:bg-navy-light hover:text-white text-lg px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-glow"
+              >
+                Secure Your Spot Now
+              </Button>
+            </div>
           </div>
         </div>
       </div>
