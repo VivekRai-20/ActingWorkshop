@@ -215,6 +215,15 @@ All colors MUST be HSL.
     opacity: 0.4;
     pointer-events: none;
   }
+
+  /* Gallery Animation Classes */
+  .animate-scroll-right-to-left {
+    animation: scrollRightToLeft 30s linear infinite;
+  }
+
+  .animate-scroll-left-to-right {
+    animation: scrollLeftToRight 30s linear infinite;
+  }
 }
 
 @keyframes fadeIn {
@@ -232,5 +241,23 @@ All colors MUST be HSL.
 @keyframes scaleIn {
   to {
     @apply scale-100 opacity-100;
+  }
+}
+
+@keyframes scrollRightToLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollLeftToRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
   }
 }

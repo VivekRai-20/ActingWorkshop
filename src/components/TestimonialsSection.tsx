@@ -100,39 +100,63 @@ const TestimonialsSection = () => {
         {/* Student Problem Screenshots */}
         <div className="mb-20">
           <h3 className="text-3xl font-bold text-center text-white mb-12">
-            <span className="text-red-400">Before:</span> Common Acting Problems Our Students Faced
+            <span className="text-red-400">Before:</span> Common Problems Students Face
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            <Card className="glow-border bg-red-900/10 backdrop-blur-sm border-red-500/30 p-6 animate-scale-in">
-              <div className="text-center">
-                <div className="bg-red-500/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">😰</span>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Stage Fear",
+                problem: "I freeze during auditions and can't perform naturally",
+                emoji: "😰"
+              },
+              {
+                title: "Fake Acting",
+                problem: "My acting feels fake and forced, not authentic",
+                emoji: "🎭"
+              },
+              {
+                title: "Character Understanding",
+                problem: "I don't understand how to decode character emotions",
+                emoji: "😕"
+              },
+              {
+                title: "Dialogue Delivery",
+                problem: "My dialogue delivery sounds flat and monotone",
+                emoji: "😑"
+              },
+              {
+                title: "Camera Nervousness",
+                problem: "I feel nervous in front of cameras",
+                emoji: "📹"
+              },
+              {
+                title: "Body Language",
+                problem: "I don't know how to use my body language effectively",
+                emoji: "🚶"
+              }
+            ].map((item, index) => (
+              <div 
+                key={index}
+                className="glow-border bg-red-900/20 backdrop-blur-sm rounded-xl p-6 hover-lift animate-scale-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="text-center mb-4">
+                  <div className="bg-red-500/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl">{item.emoji}</span>
+                  </div>
+                  <h4 className="text-red-300 font-bold text-lg mb-2">{item.title}</h4>
                 </div>
-                <h4 className="text-white font-semibold mb-2">Stage Fear Problem</h4>
-                <p className="text-white/70 text-sm">Screenshot: Student freezing during audition</p>
-              </div>
-            </Card>
-            
-            <Card className="glow-border bg-red-900/10 backdrop-blur-sm border-red-500/30 p-6 animate-scale-in">
-              <div className="text-center">
-                <div className="bg-red-500/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🎭</span>
+                <div className="bg-red-900/30 p-4 rounded-lg border border-red-500/30">
+                  <p className="text-white/90 text-sm leading-relaxed italic">
+                    "{item.problem}"
+                  </p>
+                  <div className="text-red-400/60 text-xs mt-3 text-right">
+                    - Student Concern
+                  </div>
                 </div>
-                <h4 className="text-white font-semibold mb-2">Overacting Issues</h4>
-                <p className="text-white/70 text-sm">Screenshot: Unnatural expressions</p>
               </div>
-            </Card>
-            
-            <Card className="glow-border bg-red-900/10 backdrop-blur-sm border-red-500/30 p-6 animate-scale-in">
-              <div className="text-center">
-                <div className="bg-red-500/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">😑</span>
-                </div>
-                <h4 className="text-white font-semibold mb-2">Flat Dialogue Delivery</h4>
-                <p className="text-white/70 text-sm">Screenshot: Monotone speech patterns</p>
-              </div>
-            </Card>
+            ))}
           </div>
         </div>
 
