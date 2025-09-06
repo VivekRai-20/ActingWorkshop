@@ -38,6 +38,7 @@ This document provides step-by-step instructions for deploying the Acting Worksh
 ### 2. Configure Environment Variables
 
 **Step-by-step:**
+
 1. Go to your project dashboard on Vercel
 2. Click on "Settings" tab
 3. Click on "Environment Variables" in the left sidebar
@@ -49,6 +50,7 @@ RAZORPAY_KEY_SECRET=your_razorpay_secret_key
 ```
 
 **Important Notes:**
+
 - Use test credentials for development: `rzp_test_xxxxxxxxxx`
 - Use live credentials for production: `rzp_live_xxxxxxxxxx`
 - Set these variables for all environments (Development, Preview, Production)
@@ -114,6 +116,7 @@ ActingWorkshop/
 ### Common Issues
 
 1. **Environment Variable Reference Errors**
+
    - Error: `Environment Variable "RAZORPAY_KEY_ID" references Secret "razorpay_key_id", which does not exist`
    - Solution: Remove env variables from vercel.json and set them in Vercel dashboard instead
    - Never use @ prefix in vercel.json unless you have actual Vercel secrets configured
@@ -130,7 +133,7 @@ ActingWorkshop/
    - Check API route logs in Vercel dashboard
    - Ensure test/live keys match the environment
 
-3. **Static Generation Errors**
+4. **Static Generation Errors**
    - Ensure `dynamic = 'force-dynamic'` is set for pages using search params
    - Check for proper Suspense boundaries around client-side hooks
 
