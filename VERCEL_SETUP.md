@@ -16,6 +16,7 @@ To set up your payment functionality on Vercel, you need to configure the follow
 3. Click **Add** and enter each variable:
 
 **Variable 1:**
+
 ```
 Name: RAZORPAY_KEY_ID
 Value: rzp_test_XXXXXXXXXXXXXXXX  (your actual key)
@@ -23,6 +24,7 @@ Environment: Production, Preview, Development (select all)
 ```
 
 **Variable 2:**
+
 ```
 Name: RAZORPAY_KEY_SECRET
 Value: XXXXXXXXXXXXXXXXXXXXXXXX  (your actual secret)
