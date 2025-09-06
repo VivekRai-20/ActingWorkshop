@@ -24,8 +24,33 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-app.use(cors());
+
+// Configure CORS for production
+const corsOptions = {
+  origin: [
+    'http://localhost:5173', // Vite dev server
+    'http://localhost:3000', // Alternative dev server
+    process.env.FRONTEND_URL, // Your deployed frontend URL
+    /\.vercel\.app$/, // Allow all Vercel apps
+    /\.netlify\.app$/, // Allow all Netlify apps
+  ].filter(Boolean),
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
+
+// Health check endpoint for Render
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'OK', 
+    timestamp: new Date().toISOString(),
+    service: 'Acting Workshop API',
+    version: '1.0.0'
+  });
+});
 
 // Serve static files from the 'invoices' directory
 app.use('/invoices', express.static(path.join(__dirname, 'invoices')));
@@ -47,7 +72,7 @@ app.post("/create-order", async (req, res) => {
   console.log("Create order request received:", { amount, name, email, phone });
   
   const options = {
-    amount: amount || 29900, // Use amount from request or default to Rs. 299 (in paise)
+    amount: amount || 199900, // Rs. 1999 in paise (discounted price)
     currency: "INR",
     receipt: "receipt#1",
     notes: {
@@ -436,5 +461,10 @@ app.get("/invoice/:paymentId", async (req, res) => {
   }
 });
 
-// Run server
-app.listen(5000, () => console.log("🚀 Server running on http://localhost:5000"));
+// Run server with dynamic port for Render deployment
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`📊 Health check: http://localhost:${PORT}/health`);
+  console.log(`💰 Payment endpoints ready`);
+});

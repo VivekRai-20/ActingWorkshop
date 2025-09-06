@@ -57,8 +57,9 @@ export async function startRazorpayCheckout({
     
     // call your backend to create an order
     console.log("Creating order with backend...");
-    const apiBaseUrl = window.location.origin;
-    const resp = await fetch(`${apiBaseUrl}/api/create-order`, {
+    // Use environment variable for API URL or fallback to localhost for development
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || window.location.origin;
+    const resp = await fetch(`${apiBaseUrl}/create-order`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -103,7 +104,7 @@ export async function startRazorpayCheckout({
               phone: cleanedPhone
             });
             
-            const verifyResp = await fetch(`${apiBaseUrl}/api/payment-success`, {
+            const verifyResp = await fetch(`${apiBaseUrl}/payment-success`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({

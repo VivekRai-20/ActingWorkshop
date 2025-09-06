@@ -135,7 +135,7 @@ const PaymentConfirmation = ({ paymentId, orderId, amount, onSubmit }: PaymentCo
 
           <div className="space-y-4">
             <a 
-              href={`/api/invoice/${paymentId}?t=${new Date().getTime()}`}
+              href={`${import.meta.env.VITE_API_BASE_URL || window.location.origin}/invoice/${paymentId}?t=${new Date().getTime()}`}
               download={`invoice-${paymentId}.pdf`}
               className="flex items-center justify-center w-full py-2 px-4 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
             >
