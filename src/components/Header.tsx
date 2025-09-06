@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X, Play, User, LogIn } from "lucide-react";
 import { useState } from "react";
+import CustomerDetailsForm from "./CustomerDetailsForm";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showDetailsForm, setShowDetailsForm] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -14,8 +16,7 @@ const Header = () => {
   };
 
   const handleJoinWorkshop = () => {
-    // This will later integrate with payment gateway
-    console.log("Redirect to payment gateway");
+    setShowDetailsForm(true);
   };
 
   return (
@@ -129,6 +130,12 @@ const Header = () => {
           </div>
         )}
       </div>
+      
+      <CustomerDetailsForm
+        isOpen={showDetailsForm}
+        onClose={() => setShowDetailsForm(false)}
+        amount={29900}
+      />
     </header>
   );
 };

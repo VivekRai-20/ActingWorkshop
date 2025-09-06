@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Play, Mail, Phone, MapPin, Instagram, Youtube, Facebook } from "lucide-react";
+import { useState } from "react";
+import CustomerDetailsForm from "./CustomerDetailsForm";
 
 const Footer = () => {
+  const [showDetailsForm, setShowDetailsForm] = useState(false);
+
   const handleJoinWorkshop = () => {
-    // This will later integrate with payment gateway
-    console.log("Redirect to payment gateway");
+    setShowDetailsForm(true);
   };
 
   return (
@@ -70,9 +73,9 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-6">Get in Touch</h3>
             <div className="space-y-4">
-              <div className="flex items-center">
-                <Mail className="h-5 w-5 text-navy-light mr-3" />
-                <span className="text-navy-light">info@actingmaster.com</span>
+              <div className="flex items-start">
+                <Mail className="h-5 w-5 text-navy-light mr-3 mt-1 flex-shrink-0" />
+                <span className="text-navy-light text-sm break-all">praveenhingoniavision@gmail.com</span>
               </div>
               <div className="flex items-center">
                 <Phone className="h-5 w-5 text-navy-light mr-3" />
@@ -88,15 +91,30 @@ const Footer = () => {
             <div className="mt-6">
               <h4 className="font-semibold mb-4">Follow Us</h4>
               <div className="flex space-x-4">
-                <button className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
+                <a 
+                  href="https://www.instagram.com/praveenhingoniavision?igsh=MXVpZDIzdTlqZXUzbg%3D%3D&utm_source=qr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+                >
                   <Instagram className="h-5 w-5 text-navy-light" />
-                </button>
-                <button className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
+                </a>
+                <a 
+                  href="https://youtube.com/@praveenhingoniavision?si=46FPTviYlD-ODOLD"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+                >
                   <Youtube className="h-5 w-5 text-navy-light" />
-                </button>
-                <button className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
+                </a>
+                <a 
+                  href="https://www.facebook.com/share/19PhMayWP4/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+                >
                   <Facebook className="h-5 w-5 text-navy-light" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -111,9 +129,9 @@ const Footer = () => {
           </p>
           <Button 
             onClick={handleJoinWorkshop}
-            className="bg-white text-primary hover:bg-navy-light hover:text-white text-lg px-12 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-glow"
+            className="bg-white text-primary hover:bg-navy-light hover:text-white text-base sm:text-lg px-6 sm:px-8 lg:px-12 py-3 sm:py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-glow w-full sm:w-auto text-center"
           >
-            Enroll in 3-Day Workshop
+            <span className="block sm:inline leading-tight">Enroll in Workshop</span>
           </Button>
         </div>
 
@@ -127,6 +145,12 @@ const Footer = () => {
          </div>
         </div>
       </div>
+      
+      <CustomerDetailsForm
+        isOpen={showDetailsForm}
+        onClose={() => setShowDetailsForm(false)}
+        amount={29900}
+      />
     </footer>
   );
 };

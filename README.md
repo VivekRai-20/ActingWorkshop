@@ -1,8 +1,27 @@
-# Welcome to your Lovable project
+# Character Decode Camp Workshop
 
 ## Project info
 
 **URL**: https://lovable.dev/projects/a3787543-255d-44b6-bbae-6bdc702665b6
+
+## Email Configuration
+
+This project uses Gmail for sending confirmation emails and invoices. To enable email functionality:
+
+1. Update the `.env` file in the `server` directory with your Gmail credentials:
+   ```
+   EMAIL_USER=your-email@gmail.com
+   EMAIL_PASS=your-app-password
+   ADMIN_EMAIL=admin-email@gmail.com
+   ```
+
+2. For `EMAIL_PASS`, you need to use an App Password, not your regular Gmail password:
+   - Go to your Google Account > Security > 2-Step Verification
+   - At the bottom, select "App passwords"
+   - Create a new app password for "Mail"
+   - Copy the generated 16-character password (without spaces)
+
+3. If emails are not being sent, check the server logs for specific error messages
 
 ## How can I edit this code?
 

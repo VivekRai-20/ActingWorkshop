@@ -7,11 +7,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { HelpCircle, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import CustomerDetailsForm from "./CustomerDetailsForm";
 
 const FAQ = () => {
+  const [showDetailsForm, setShowDetailsForm] = useState(false);
+
   const handleJoinWorkshop = () => {
-    // This will later integrate with payment gateway
-    console.log("Redirect to payment gateway");
+    setShowDetailsForm(true);
   };
 
   const faqs = [
@@ -57,22 +60,15 @@ const FAQ = () => {
     }
   ];
 
-  const notForYou = [
-    "You think acting can be mastered in a few minutes without practice",
-    "You are not willing to participate in live exercises and activities", 
-    "You expect to become a celebrity overnight without hard work",
-    "You have no interest in learning the basics of performance and discipline",
-    "You are joining just to 'pass time' without genuine passion for acting"
-  ];
-
   return (
     <section id="faq" className="py-20 dark-section relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Frequently Asked <span className="text-navy-light">Questions</span>
           </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
             Get clarity on everything you need to know about the workshop.
           </p>
         </div>
@@ -81,17 +77,19 @@ const FAQ = () => {
           {/* FAQ Accordion */}
           <Card className="glow-border bg-white/5 backdrop-blur-sm p-8 animate-fade-in">
             <div className="flex items-center mb-6">
-              <HelpCircle className="h-8 w-8 text-navy-light mr-3" />
-              <h3 className="text-2xl font-bold text-white">Common Questions</h3>
+              <HelpCircle className="h-8 md:h-10 w-8 md:w-10 text-navy-light mr-3" />
+              <h3 className="text-2xl md:text-3xl font-bold text-white">
+                Common Questions
+              </h3>
             </div>
             
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="border-white/10">
-                  <AccordionTrigger className="text-left font-semibold text-white hover:text-navy-light">
+                  <AccordionTrigger className="text-left font-semibold text-white hover:text-navy-light text-lg md:text-xl">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-white/80 leading-relaxed">
+                  <AccordionContent className="text-white/80 leading-relaxed text-base md:text-lg">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -101,36 +99,46 @@ const FAQ = () => {
 
           {/* CTA Section */}
           <div className="mt-16 text-center">
-            <Card className="glow-border bg-gradient-neon-glow p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">Ready to Begin?</h3>
-              <p className="text-white/90 mb-6">
+            <Card className="bg-white shadow-xl rounded-2xl p-8 border border-gray-200">
+              <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
+                Ready to Begin?
+              </h3>
+              <p className="text-lg md:text-xl text-gray-600 mb-6">
                 If you're passionate about acting and ready to learn, join hundreds of students 
                 who've transformed their skills with our proven method.
               </p>
-              <div className="flex flex-wrap justify-center gap-6 mb-8">
-                <div className="flex items-center text-white">
-                  <CheckCircle className="h-5 w-5 text-navy-light mr-2" />
+
+              <div className="flex flex-wrap justify-center gap-6 mb-8 text-base md:text-lg">
+                <div className="flex items-center text-gray-800">
+                  <CheckCircle className="h-5 w-5 text-blue-500 mr-2" />
                   <span>3-Day Intensive Training</span>
                 </div>
-                <div className="flex items-center text-white">
-                  <CheckCircle className="h-5 w-5 text-navy-light mr-2" />
+                <div className="flex items-center text-gray-800">
+                  <CheckCircle className="h-5 w-5 text-blue-500 mr-2" />
                   <span>Personal Feedback from Expert</span>
                 </div>
-                <div className="flex items-center text-white">
-                  <CheckCircle className="h-5 w-5 text-navy-light mr-2" />
+                <div className="flex items-center text-gray-800">
+                  <CheckCircle className="h-5 w-5 text-blue-500 mr-2" />
                   <span>Official Certification</span>
                 </div>
               </div>
+
               <Button 
                 onClick={handleJoinWorkshop}
-                className="btn-primary text-lg py-3 px-8 glow-border"
+                className="bg-blue-600 hover:bg-blue-700 text-white text-base sm:text-lg md:text-xl py-3 px-6 sm:px-8 rounded-xl shadow-md transition w-full sm:w-auto text-center leading-tight"
               >
-                Enroll in Workshop Now
+                <span className="block sm:inline leading-tight">Enroll Now</span>
               </Button>
             </Card>
           </div>
         </div>
       </div>
+      
+      <CustomerDetailsForm
+        isOpen={showDetailsForm}
+        onClose={() => setShowDetailsForm(false)}
+        amount={29900}
+      />
     </section>
   );
 };

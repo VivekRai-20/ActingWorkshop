@@ -12,6 +12,8 @@ import WhoCanJoinSection from "@/components/WhoCanJoinSection";
 import FAQ from "@/components/FAQ";
 import WhoShouldNotJoin from "@/components/WhoShouldNotJoin";
 import Footer from "@/components/Footer";
+import FixedAfterWorkshop from "@/components/FixedAfterWorkshop";
+import Navras from "@/components/Navras";
 
 const Index = () => {
   return (
@@ -23,13 +25,16 @@ const Index = () => {
         <WhyJoinSection />
         <BeforeAfterSection />
         <AboutSection />
+        <Navras />
         <ScheduleSection />
+
         <TestimonialsSection />
         <VideoSection />
         <GallerySection />
         <WhoCanJoinSection />
-        <FAQ />
+        <FixedAfterWorkshop />
         <WhoShouldNotJoin />
+        <FAQ />
       </main>
       <Footer />
     </div>

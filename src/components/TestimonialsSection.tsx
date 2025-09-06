@@ -1,294 +1,125 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Star, Quote, Play, Volume2 } from "lucide-react";
 import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Play, MessageSquare } from "lucide-react";
+
+// Import chat screenshots
+import chat1 from "@/assets/testimonials/chat1.jpg";
+import chat2 from "@/assets/testimonials/chat2.jpg";
+import chat3 from "@/assets/testimonials/chat3.jpg";
+import chat4 from "@/assets/testimonials/chat4.jpg";
+import chat5 from "@/assets/testimonials/chat5.jpg";
+import chat6 from "@/assets/testimonials/chat6.jpg";
+import chat7 from "@/assets/testimonials/chat7.jpg";
+import chat8 from "@/assets/testimonials/chat8.jpg";
+import chat9 from "@/assets/testimonials/chat9.jpg";
+import chat10 from "@/assets/testimonials/chat10.jpg";
 
 const TestimonialsSection = () => {
-  const [activeVideo, setActiveVideo] = useState<number | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
-  const handleJoinWorkshop = () => {
-    // This will later integrate with payment gateway
-    console.log("Redirect to payment gateway");
-  };
-
-  const testimonials = [
-    {
-      name: "Anisha Patel",
-      age: "16 years",
-      location: "Mumbai",
-      message: "I was so nervous about acting, but Praveen sir's Character Decoding method changed everything! Now I can understand any role and perform naturally. Got my first audition callback after the workshop! 🎭",
-      rating: 5,
-      isVideo: true
-    },
-    {
-      name: "Rohit Kumar", 
-      age: "14 years",
-      location: "Delhi",
-      message: "My parents couldn't afford expensive acting classes. This workshop taught me more in 3 days than I learned from YouTube in months. The body language techniques are amazing! Already performed in my school drama and everyone was impressed. Thank you sir! 🙏",
-      rating: 5,
-      isVideo: false
-    },
-    {
-      name: "Priya Singh",
-      age: "17 years", 
-      location: "Bangalore",
-      message: "I used to freeze in front of the camera. Praveen sir's stage fear techniques worked like magic! Now I'm confident in auditions and even started my own Instagram acting page. The voice modulation classes were incredible! 🎤",
-      rating: 5,
-      isVideo: true
-    },
-    {
-      name: "Arjun Mehta",
-      age: "15 years",
-      location: "Pune",
-      message: "The script reading and dialogue delivery session was life-changing. I can now understand the hidden emotions in every line. Got selected for a local theater group! Sir's improvisations techniques helped me think faster. Worth every penny! ⭐",
-      rating: 5,
-      isVideo: false
-    },
-    {
-      name: "Kavya Reddy",
-      age: "16 years",
-      location: "Chennai", 
-      message: "From being shy to performing confidently on camera in just 3 days! The character decoding method is pure gold. I can now connect with any character emotionally. Planning to audition for TV shows soon. Thank you for believing in us! 💫",
-      rating: 5,
-      isVideo: true
-    },
-    {
-      name: "Siddharth Jain",
-      age: "13 years",
-      location: "Ahmedabad",
-      message: "My acting felt fake before this workshop. Now everyone says I look natural on screen! The body language and expressions training was amazing. Even my friends noticed the change. Sir made acting so simple to understand! 🎬",
-      rating: 5,
-      isVideo: false
-    }
+  const videoTestimonials = [
+    { name: "Alka Amin", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100098/AlkaAmin_rwmhop.mov" },
+    { name: "Alka Kaushal", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100145/AlkaKaushal_jitryi.mov" },
+    { name: "Amardeep Jha", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100188/AmardeepJha_a5ewsz.mov" },
+    { name: "Ashmita Sharma", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100108/AshmitaSharma_nfhdvu.mov" },
+    { name: "Bhuvnesh Maan", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100218/Bhuvneshmaan_wlodil.mov" },
+    { name: "Gyaan Prakash", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100109/GyaanPrakash_ghz7o1.mov" },
+    { name: "Paritosh Tripathi", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100207/Paritoshtripathi_pbo5yp.mov" },
+    { name: "Rajesh Sharma", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100134/RajeshSharma_l8lumr.mov" },
+    { name: "Revti Pillai", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100197/Revtipillai_jwsedw.mov" },
+    { name: "Rohit Chaudhary", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100186/Rohitchaudhary_asex7h.mov" },
+    { name: "Ruhana Khanna", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100196/RuhanaKhanna_ermnuh.mov" },
+    { name: "Sanjay Swaraj", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100155/Sanjayswaraj_q1ug2z.mov" },
+    { name: "Sheeba Chadda", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100154/Sheebachadda_ginagf.mov" },
+    { name: "Shreya Jha", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100204/Shreyajha_biznll.mov" },
+    { name: "Shrikant Verma", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100439/ShrikantVerma_sy0spd.mov" },
+    { name: "Sunita Rajwar", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100162/SunitaRAJWAR_ckolum.mov" },
+    { name: "Dayanand Shetty", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100128/DayanandShetty_xtwo5t.mp4" },
   ];
 
-  const professionalTestimonials = [
-    {
-      name: "Rajesh Sharma",
-      designation: "Casting Director, Zee TV",
-      message: "Praveen's students always stand out in auditions. His character decoding method produces naturally confident actors. I've cast several of his workshop graduates.",
-      rating: 5
-    },
-    {
-      name: "Meera Kapoor", 
-      designation: "Director, Colors TV",
-      message: "The transformation I see in actors after Praveen's workshop is remarkable. They understand character depth better than many experienced actors.",
-      rating: 5
-    },
-    {
-      name: "Amit Verma",
-      designation: "Producer, Sony Entertainment",
-      message: "Praveen's approach to acting education is revolutionary. His students come prepared, confident, and with a deep understanding of their craft.",
-      rating: 5
-    }
+  const chatTestimonials = [
+    chat1, chat2, chat3, chat4, chat5, chat6, 
   ];
 
   return (
-    <section id="testimonials" className="py-20 bg-gradient-dark relative overflow-hidden">
-      {/* Background glow effect */}
-      <div className="absolute inset-0 bg-gradient-radial-glow opacity-60"></div>
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
+    <section className="py-20 bg-neutral-950">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            What Our <span className="text-navy-light">Students Say</span>
+            What <span className="text-blue-500">Actors</span> Say
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Real stories from aspiring actors whose dreams became reality after just 3 days.
+            Hear from real actors about Praveen Hingonia
           </p>
         </div>
 
-        {/* Student Problem Screenshots */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-bold text-center text-white mb-12">
-            <span className="text-red-400">Before:</span> Common Problems Students Face
-          </h3>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Stage Fear",
-                problem: "I freeze during auditions and can't perform naturally",
-                emoji: "😰"
-              },
-              {
-                title: "Fake Acting",
-                problem: "My acting feels fake and forced, not authentic",
-                emoji: "🎭"
-              },
-              {
-                title: "Character Understanding",
-                problem: "I don't understand how to decode character emotions",
-                emoji: "😕"
-              },
-              {
-                title: "Dialogue Delivery",
-                problem: "My dialogue delivery sounds flat and monotone",
-                emoji: "😑"
-              },
-              {
-                title: "Camera Nervousness",
-                problem: "I feel nervous in front of cameras",
-                emoji: "📹"
-              },
-              {
-                title: "Body Language",
-                problem: "I don't know how to use my body language effectively",
-                emoji: "🚶"
-              }
-            ].map((item, index) => (
-              <div 
-                key={index}
-                className="glow-border bg-red-900/20 backdrop-blur-sm rounded-xl p-6 hover-lift animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-center mb-4">
-                  <div className="bg-red-500/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl">{item.emoji}</span>
-                  </div>
-                  <h4 className="text-red-300 font-bold text-lg mb-2">{item.title}</h4>
-                </div>
-                <div className="bg-red-900/30 p-4 rounded-lg border border-red-500/30">
-                  <p className="text-white/90 text-sm leading-relaxed italic">
-                    "{item.problem}"
-                  </p>
-                  <div className="text-red-400/60 text-xs mt-3 text-right">
-                    - Student Concern
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Videos Grid */}
+<div className="grid md:grid-cols-3 gap-8 mb-16">
+  {videoTestimonials.map((testimonial, index) => (
+    <Card
+      key={index}
+      className="relative group cursor-pointer bg-neutral-900 border border-gray-700 overflow-hidden"
+      onClick={() => setSelectedVideo(testimonial.file)}
+    >
+      <video
+        src={testimonial.file}
+        className="aspect-video w-full object-cover"
+        preload="metadata"
+      />
+      {/* Play icon overlay */}
+      <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+        <Play className="h-14 w-14 text-white drop-shadow-lg" />
+      </div>
+      <div className="p-4 text-center text-white font-semibold">
+        {testimonial.name}
+      </div>
+    </Card>
+  ))}
+</div>
 
-        {/* Student Success Stories */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-bold text-center text-white mb-12">
-            <span className="text-green-400">After:</span> Student Success Stories
-          </h3>
-          
-           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-            <Card 
+
+        {/* Chat Screenshots Grid */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {chatTestimonials.map((chat, index) => (
+            <Card
               key={index}
-              className="glow-border bg-green-900/10 backdrop-blur-sm border-green-500/30 hover-lift shadow-dark-glow animate-scale-in p-6"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="overflow-hidden bg-neutral-900 border border-gray-700"
             >
-              <div className="flex items-center mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              
-              <Quote className="h-8 w-8 text-navy-light mb-4" />
-              
-              <p className="text-white/90 mb-6 leading-relaxed">
-                {testimonial.message}
-              </p>
-              
-              {testimonial.isVideo && (
-                <div className="mb-4">
-                  <div 
-                    className="relative bg-navy-primary/10 rounded-lg p-4 cursor-pointer hover:bg-navy-primary/20 transition-colors"
-                    onClick={() => setActiveVideo(activeVideo === index ? null : index)}
-                  >
-                    <div className="flex items-center justify-center">
-                      <Play className="h-8 w-8 text-primary mr-2" />
-                      <span className="text-primary font-semibold">
-                        {activeVideo === index ? "Playing..." : "Watch Video Testimonial"}
-                      </span>
-                    </div>
-                    {activeVideo === index && (
-                      <div className="mt-2 text-center">
-                        <Volume2 className="h-4 w-4 text-navy-secondary inline mr-1" />
-                        <span className="text-sm text-navy-secondary">Video testimonial playing</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-              
-              <div className="border-t border-border pt-4">
-                <h4 className="font-semibold text-navy-light">{testimonial.name}</h4>
-                <p className="text-sm text-white/70">{testimonial.age} • {testimonial.location}</p>
-              </div>
+              <img
+                src={chat}
+                alt={`Chat testimonial ${index + 1}`}
+                className="w-full h-auto object-contain"
+              />
             </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Professional Video Testimonials */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-bold text-center text-white mb-12">
-            Industry <span className="text-navy-light">Professionals</span> Video Testimonials
-          </h3>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {professionalTestimonials.map((testimonial, index) => (
-              <Card 
-                key={index}
-                className="glow-border bg-gradient-neon-glow p-6 text-white animate-fade-in"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 text-yellow-300 fill-current" />
-                  ))}
-                </div>
-                
-                {/* Video Placeholder */}
-                <div className="mb-4">
-                  <div 
-                    className="relative bg-navy-primary/20 rounded-lg p-8 cursor-pointer hover:bg-navy-primary/30 transition-colors glow-border"
-                    onClick={() => setActiveVideo(activeVideo === (index + 100) ? null : (index + 100))}
-                  >
-                    <div className="flex items-center justify-center">
-                      <Play className="h-12 w-12 text-white mr-2" />
-                      <span className="text-white font-semibold text-lg">
-                        {activeVideo === (index + 100) ? "Playing..." : "Watch Professional Testimonial"}
-                      </span>
-                    </div>
-                    {activeVideo === (index + 100) && (
-                      <div className="mt-4 text-center">
-                        <Volume2 className="h-6 w-6 text-navy-light inline mr-2" />
-                        <span className="text-navy-light">Professional testimonial playing</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                
-                <Quote className="h-6 w-6 text-navy-light mb-4" />
-                
-                <p className="text-white/90 mb-6 leading-relaxed">
-                  "{testimonial.message}"
-                </p>
-                
-                <div className="border-t border-white/20 pt-4">
-                  <h4 className="font-semibold text-white">{testimonial.name}</h4>
-                  <p className="text-sm text-navy-light">{testimonial.designation}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center">
-          <Card className="glow-border bg-gradient-neon-glow p-8 shadow-intense-glow max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Join Our Success Stories
-            </h3>
-            <p className="text-xl text-white/90 mb-6">
-              Don't just dream about acting — start your journey with proven methods and expert guidance.
-            </p>
-            <Button 
-              onClick={handleJoinWorkshop}
-              className="btn-primary text-lg px-8 py-4 glow-border"
-            >
-              Start Your Acting Journey
-            </Button>
-          </Card>
+          ))}
         </div>
       </div>
+
+{/* Video Modal */}
+{selectedVideo && (
+  <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 px-4">
+    <div className="relative w-full max-w-3xl bg-black rounded-lg overflow-hidden shadow-xl">
+      {/* Video inside container */}
+      <video
+        controls
+        autoPlay
+        className="w-full max-h-[80vh] mx-auto block object-contain"
+      >
+        <source src={selectedVideo} type="video/mp4" />
+      </video>
+
+      {/* Close button */}
+      <button
+        onClick={() => setSelectedVideo(null)}
+        className="absolute top-3 right-3 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md hover:bg-gray-200"
+      >
+        ✕
+      </button>
+    </div>
+  </div>
+)}
+
+
     </section>
   );
 };

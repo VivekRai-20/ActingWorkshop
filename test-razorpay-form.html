@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Razorpay Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+        .success {
+            color: green;
+            margin-top: 10px;
+        }
+        .test-section {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Razorpay Form Submission</h1>
+    
+    <div class="test-section">
+        <h2>1. Test Direct API Call</h2>
+        <form id="directApiForm">
+            <div class="form-group">
+                <label for="amount">Amount (in INR)</label>
+                <input type="number" id="amount" name="amount" value="1000" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="Test User" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="test@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" value="9999999999" required>
+            </div>
+            <button type="submit">Create Order</button>
+        </form>
+        <div id="directApiResult" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Test Customer Details Submission</h2>
+        <form id="customerDetailsForm">
+            <div class="form-group">
+                <label for="cd_name">Name</label>
+                <input type="text" id="cd_name" name="name" value="Test User" required>
+            </div>
+            <div class="form-group">
+                <label for="cd_email">Email</label>
+                <input type="email" id="cd_email" name="email" value="test@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="cd_phone">Phone</label>
+                <input type="text" id="cd_phone" name="phone" value="9999999999" required>
+            </div>
+            <div class="form-group">
+                <label for="cd_paymentId">Payment ID</label>
+                <input type="text" id="cd_paymentId" name="paymentId" value="pay_test123" required>
+            </div>
+            <div class="form-group">
+                <label for="cd_orderId">Order ID</label>
+                <input type="text" id="cd_orderId" name="orderId" value="order_test123" required>
+            </div>
+            <div class="form-group">
+                <label for="cd_amount">Amount</label>
+                <input type="number" id="cd_amount" name="amount" value="1000" required>
+            </div>
+            <button type="submit">Submit Customer Details</button>
+        </form>
+        <div id="customerDetailsResult" class="result"></div>
+    </div>
+
+    <h2>Console Log</h2>
+    <pre id="consoleOutput"></pre>
+
+    <script>
+        // Helper function to log to both console and our UI
+        function logToUI(message, data) {
+            const logMessage = typeof data !== 'undefined' 
+                ? `${message}: ${JSON.stringify(data, null, 2)}` 
+                : message;
+            
+            console.log(logMessage);
+            
+            const consoleOutput = document.getElementById('consoleOutput');
+            const timestamp = new Date().toISOString().split('T')[1].split('.')[0];
+            consoleOutput.textContent = `[${timestamp}] ${logMessage}\n` + consoleOutput.textContent;
+        }
+
+        // Test direct API call
+        document.getElementById('directApiForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const resultDiv = document.getElementById('directApiResult');
+            resultDiv.innerHTML = '<p>Processing...</p>';
+            
+            try {
+                const formData = {
+                    amount: parseInt(document.getElementById('amount').value),
+                    name: document.getElementById('name').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim()
+                };
+                
+                logToUI('Creating order with data', formData);
+                
+                const response = await fetch('http://localhost:5000/create-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                logToUI('Server response', data);
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <p class="success">Order created successfully!</p>
+                        <p><strong>Order ID:</strong> ${data.orderId}</p>
+                        <p><strong>Amount:</strong> ${data.amount/100} ${data.currency || 'INR'}</p>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<p class="error">Error: ${data.message || 'Unknown error'}</p>`;
+                }
+            } catch (error) {
+                logToUI('Error creating order', error.message);
+                resultDiv.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+            }
+        });
+
+        // Test customer details submission
+        document.getElementById('customerDetailsForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const resultDiv = document.getElementById('customerDetailsResult');
+            resultDiv.innerHTML = '<p>Processing...</p>';
+            
+            try {
+                const formData = {
+                    name: document.getElementById('cd_name').value.trim(),
+                    email: document.getElementById('cd_email').value.trim(),
+                    phone: document.getElementById('cd_phone').value.trim(),
+                    paymentId: document.getElementById('cd_paymentId').value.trim(),
+                    orderId: document.getElementById('cd_orderId').value.trim(),
+                    amount: parseInt(document.getElementById('cd_amount').value)
+                };
+                
+                logToUI('Submitting customer details', formData);
+                
+                const response = await fetch('http://localhost:5000/submit-customer-details', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                logToUI('Server response', data);
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <p class="success">Customer details submitted successfully!</p>
+                        ${data.invoiceUrl ? `<p><a href="${data.invoiceUrl}" target="_blank">Download Invoice</a></p>` : ''}
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<p class="error">Error: ${data.message || 'Unknown error'}</p>`;
+                }
+            } catch (error) {
+                logToUI('Error submitting customer details', error.message);
+                resultDiv.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>

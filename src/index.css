@@ -130,7 +130,12 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-montserrat;
+  }
+  
+  /* Apply Roboto Slab font to all headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
   }
 }
 
@@ -149,6 +154,10 @@ All colors MUST be HSL.
   .animate-scale-in {
     @apply scale-95 opacity-0;
     animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
   }
 
   .hover-lift {
@@ -241,6 +250,15 @@ All colors MUST be HSL.
 @keyframes scaleIn {
   to {
     @apply scale-100 opacity-100;
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.4);
   }
 }
 
