@@ -36,6 +36,11 @@ logs
 *.avi
 *.mkv
 
+# Server files that should not be committed
+server/.env
+server/invoices/
+*.pdf
+
 # Temporary files
 *.tmp
 *.temp
