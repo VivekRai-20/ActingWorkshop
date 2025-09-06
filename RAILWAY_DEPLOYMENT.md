@@ -18,6 +18,7 @@ Railway is excellent for full-stack applications with automatic deployments, bui
 ### Step 3: Configure Railway Service
 
 **Service Configuration:**
+
 ```
 Service Name: acting-workshop-api
 Start Command: npm start
@@ -26,9 +27,9 @@ Root Directory: server
 
 **Environment Variables:**
 In your Railway project dashboard, go to Variables tab and add:
+
 ```
 NODE_ENV=production
-PORT=${{RAILWAY_PUBLIC_PORT}}
 RAZORPAY_KEY_ID=rzp_test_RED40nMABfQ224
 RAZORPAY_KEY_SECRET=4VtJjsEIB8GdjmzJrWrMEo5m
 EMAIL_USER=mi45csk07fan@gmail.com
@@ -37,7 +38,7 @@ ADMIN_EMAIL=mi45csk07fan@gmail.com
 FRONTEND_URL=https://your-frontend-domain.vercel.app
 ```
 
-**Note**: Railway automatically provides `${{RAILWAY_PUBLIC_PORT}}` variable.
+**Note**: Railway automatically provides the `PORT` environment variable, so you don't need to set it manually.
 
 ### Step 4: Configure Railway Settings
 
@@ -51,6 +52,7 @@ In your Railway service settings:
 ### Step 5: Update server/package.json
 
 Ensure your `server/package.json` has:
+
 ```json
 {
   "name": "acting-workshop-server",
@@ -77,6 +79,7 @@ Ensure your `server/package.json` has:
 ### Step 1: Update Environment Variables
 
 Add to your Vercel project environment variables:
+
 ```
 VITE_API_BASE_URL=https://your-railway-app.railway.app
 ```
@@ -96,6 +99,7 @@ GET https://your-railway-app.railway.app/health
 ```
 
 Expected response:
+
 ```json
 {
   "status": "OK",
@@ -134,40 +138,46 @@ Expected response:
 
 ## 🚨 Important Notes
 
-1. **Railway Free Tier**: 
+1. **Railway Free Tier**:
+
    - $5 credit per month
    - No sleeping (unlike Render/Heroku)
    - Good for development and low-traffic production
 
-2. **Custom Domains**: 
+2. **Custom Domains**:
+
    - Available on all plans
    - Easy SSL certificate management
 
-3. **Scaling**: 
+3. **Scaling**:
    - Automatic scaling available
    - Can handle production traffic
 
 ## 🐛 Troubleshooting
 
 ### Backend Issues:
+
 - Check Railway service logs in dashboard
 - Verify environment variables are set correctly
 - Test health endpoint: `/health`
 - Check if service is running in Railway dashboard
 
 ### Frontend Issues:
+
 - Verify `VITE_API_BASE_URL` is set correctly in Vercel
 - Check Railway service URL is accessible
 - Verify CORS settings allow your frontend domain
 - Check browser network tab for failed requests
 
 ### Payment Issues:
+
 - Verify Razorpay credentials in Railway environment variables
 - Check Railway service logs for payment errors
 - Test with correct test card numbers: `4111 1111 1111 1111`
 - Ensure Railway service is not sleeping
 
 ### Common Railway Issues:
+
 - **Build fails**: Check if `server/package.json` exists
 - **Service not starting**: Verify start command and PORT variable
 - **Environment variables**: Make sure all required vars are set
@@ -182,18 +192,22 @@ Expected response:
 ## 🚀 Additional Railway Features
 
 ### Database Integration (Optional)
+
 If you want to add a database later:
+
 ```bash
 # In Railway dashboard, click "New" → "Database" → "PostgreSQL"
 # Railway will provide DATABASE_URL automatically
 ```
 
 ### Monitoring & Logs
+
 - Real-time logs in Railway dashboard
 - Metrics and usage statistics
 - Error tracking and alerts
 
 ### CI/CD
+
 - Automatic deployments on git push
 - Preview deployments for PRs
 - Rollback capabilities
