@@ -1,10 +1,5 @@
 const Razorpay = require("razorpay");
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
-});
-
 module.exports = async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -31,11 +26,18 @@ module.exports = async function handler(req, res) {
       hasKeySecret: !!process.env.RAZORPAY_KEY_SECRET
     });
     return res.status(500).json({ 
-      error: 'Payment service configuration error. Please contact support.' 
+      error: 'Payment service configuration error. Please contact support.',
+      details: 'Environment variables not configured'
     });
   }
 
   try {
+    // Initialize Razorpay inside the function to avoid initialization issues
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
+    });
+
     const { amount, name, email, phone } = req.body;
     
     console.log("Create order request received:", { amount, name, email, phone });
@@ -62,8 +64,9 @@ module.exports = async function handler(req, res) {
   } catch (err) {
     console.error("Order creation error:", err);
     res.status(500).json({ 
-      error: err.message,
-      details: 'Failed to create payment order. Please try again.'
+      error: err.message || 'Unknown error',
+      details: 'Failed to create payment order. Please try again.',
+      type: err.constructor.name
     });
   }
 }

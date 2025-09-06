@@ -26,18 +26,31 @@ module.exports = async function handler(req, res) {
       ? process.env.RAZORPAY_KEY_ID.substring(0, 10) + '...' 
       : 'Not set';
     
+    // Test if Razorpay package is available
+    let razorpayAvailable = false;
+    try {
+      require('razorpay');
+      razorpayAvailable = true;
+    } catch (e) {
+      console.log('Razorpay package not available:', e.message);
+    }
+    
     res.json({
       status: 'API is working',
       environment: {
         hasRazorpayKeyId,
         hasRazorpayKeySecret,
         keyIdPreview,
+        razorpayAvailable,
         nodeVersion: process.version,
         timestamp: new Date().toISOString()
       }
     });
   } catch (err) {
     console.error("Test endpoint error:", err);
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ 
+      error: err.message,
+      stack: err.stack
+    });
   }
 }
