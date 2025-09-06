@@ -57,7 +57,8 @@ export async function startRazorpayCheckout({
     
     // call your backend to create an order
     console.log("Creating order with backend...");
-    const resp = await fetch("http://localhost:5000/create-order", {
+    const apiBaseUrl = window.location.origin;
+    const resp = await fetch(`${apiBaseUrl}/api/create-order`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -98,7 +99,7 @@ export async function startRazorpayCheckout({
               phone: cleanedPhone
             });
             
-            const verifyResp = await fetch("http://localhost:5000/payment-success", {
+            const verifyResp = await fetch(`${apiBaseUrl}/api/payment-success`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({

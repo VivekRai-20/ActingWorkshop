@@ -103,7 +103,7 @@ const PaymentSuccess = () => {
           {/* Action Buttons */}
           <div className="space-y-4">
             <a 
-              href={`http://localhost:5000/invoice/${paymentDetails.paymentId}?t=${new Date().getTime()}`}
+              href={`/api/invoice/${paymentDetails.paymentId}?t=${new Date().getTime()}`}
               download={`invoice-${paymentDetails.paymentId}.pdf`}
               className="flex items-center justify-center w-full py-3 px-4 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors font-medium"
             >

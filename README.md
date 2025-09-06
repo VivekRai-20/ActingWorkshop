@@ -23,6 +23,7 @@ A comprehensive React-based web application for an acting workshop featuring pay
 ## 💰 Payment Integration
 
 This project integrates Razorpay for secure payment processing:
+
 - Workshop fee: ₹2999 (₹1999 after discount)
 - Automatic invoice generation and email delivery
 - Payment confirmation with customer details collection
@@ -32,6 +33,7 @@ This project integrates Razorpay for secure payment processing:
 The application uses Gmail SMTP for sending confirmation emails and invoices:
 
 1. Create a `.env` file in the `server` directory:
+
    ```env
    EMAIL_USER=your-email@gmail.com
    EMAIL_PASS=your-app-password
@@ -41,6 +43,7 @@ The application uses Gmail SMTP for sending confirmation emails and invoices:
    ```
 
 2. For Gmail App Password setup:
+
    - Enable 2-Step Verification in your Google Account
    - Generate an App Password for Mail
    - Use the 16-character password in the `.env` file
@@ -50,6 +53,7 @@ The application uses Gmail SMTP for sending confirmation emails and invoices:
 ## 🛠️ Local Development Setup
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - npm or yarn package manager
 - Git
@@ -57,17 +61,20 @@ The application uses Gmail SMTP for sending confirmation emails and invoices:
 ### Installation Steps
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/VivekRai-20/ActingWorkshop.git
    cd ActingWorkshop
    ```
 
 2. **Install frontend dependencies:**
+
    ```bash
    npm install
    ```
 
 3. **Install server dependencies:**
+
    ```bash
    cd server
    npm install
@@ -75,16 +82,19 @@ The application uses Gmail SMTP for sending confirmation emails and invoices:
    ```
 
 4. **Set up environment variables:**
+
    - Create `server/.env` with your configuration (see Email Configuration section)
 
 5. **Start development servers:**
-   
+
    **Frontend (Vite dev server):**
+
    ```bash
    npm run dev
    ```
-   
+
    **Backend (Express server):**
+
    ```bash
    cd server
    npm start
@@ -97,16 +107,19 @@ The application uses Gmail SMTP for sending confirmation emails and invoices:
 ### 🔄 Development Workflow
 
 **Using Lovable IDE:**
+
 - Visit [Lovable Project](https://lovable.dev/projects/a3787543-255d-44b6-bbae-6bdc702665b6)
 - Changes sync automatically with this repository
 
 **Using Local IDE:**
+
 - Make changes locally and push to GitHub
 - Changes will reflect in Lovable automatically
 
 ## 🧰 Technology Stack
 
 ### Frontend
+
 - **React 18** - Modern React with hooks and context
 - **TypeScript** - Type-safe JavaScript development
 - **Vite** - Fast build tool and dev server
@@ -116,6 +129,7 @@ The application uses Gmail SMTP for sending confirmation emails and invoices:
 - **React Router** - Client-side routing
 
 ### Backend
+
 - **Node.js** - JavaScript runtime
 - **Express.js** - Web framework
 - **Nodemailer** - Email sending functionality
@@ -123,10 +137,12 @@ The application uses Gmail SMTP for sending confirmation emails and invoices:
 - **CORS** - Cross-origin resource sharing
 
 ### Payment & Services
+
 - **Razorpay** - Payment gateway integration
 - **Gmail SMTP** - Email delivery service
 
 ### Development Tools
+
 - **ESLint** - Code linting
 - **PostCSS** - CSS processing
 - **Git** - Version control
@@ -158,11 +174,13 @@ ActingWorkshop/
 ## 🚀 Deployment Options
 
 ### Lovable Platform (Recommended)
+
 1. Visit [Lovable Project](https://lovable.dev/projects/a3787543-255d-44b6-bbae-6bdc702665b6)
 2. Click Share → Publish
 3. Configure custom domain in Project → Settings → Domains
 
 ### Manual Deployment
+
 1. **Frontend**: Deploy to Vercel, Netlify, or similar
 2. **Backend**: Deploy to Heroku, Railway, or similar Node.js hosting
 3. Update API endpoints in frontend configuration
@@ -170,6 +188,7 @@ ActingWorkshop/
 ## 🌐 Custom Domain Setup
 
 Connect your custom domain through Lovable:
+
 - Navigate to Project → Settings → Domains
 - Click "Connect Domain"
 - Follow the [custom domain guide](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
@@ -181,9 +200,10 @@ This project is private and proprietary. All rights reserved.
 ## 👥 Contact
 
 For questions about the Acting Workshop:
+
 - **Instructor**: Praveen Hingonia
 - **Repository**: [GitHub](https://github.com/VivekRai-20/ActingWorkshop)
 
 ---
 
-*Built with ❤️ for aspiring actors*
+_Built with ❤️ for aspiring actors_
