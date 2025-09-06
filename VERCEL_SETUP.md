@@ -13,12 +13,24 @@ To set up your payment functionality on Vercel, you need to configure the follow
 
 1. Go to your Vercel project dashboard
 2. Navigate to **Settings** → **Environment Variables**
-3. Add the following variables:
+3. Click **Add** and enter each variable:
 
+**Variable 1:**
 ```
-RAZORPAY_KEY_ID=rzp_test_XXXXXXXXXXXXXXXX
-RAZORPAY_KEY_SECRET=XXXXXXXXXXXXXXXXXXXXXXXX
+Name: RAZORPAY_KEY_ID
+Value: rzp_test_XXXXXXXXXXXXXXXX  (your actual key)
+Environment: Production, Preview, Development (select all)
 ```
+
+**Variable 2:**
+```
+Name: RAZORPAY_KEY_SECRET
+Value: XXXXXXXXXXXXXXXXXXXXXXXX  (your actual secret)
+Environment: Production, Preview, Development (select all)
+```
+
+4. Click **Save** for each variable
+5. Redeploy your project (should happen automatically)
 
 ### How to get Razorpay Credentials
 
