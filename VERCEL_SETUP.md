@@ -1,81 +1,150 @@
-# Vercel Deployment Setup for ActingWorkshop
+# Vercel Deployment Setup for Acting Workshop
 
-## Environment Variables Setup
+## Overview
 
-To set up your payment functionality on Vercel, you need to configure the following environment variables:
+This document provides step-by-step instructions for deploying the Acting Workshop Next.js application to Vercel.
 
-### Required Environment Variables
+## Pre-deployment Fixes Applied
 
-1. **RAZORPAY_KEY_ID**: Your Razorpay Key ID
-2. **RAZORPAY_KEY_SECRET**: Your Razorpay Key Secret
+### 1. ESLint Configuration Fix
 
-### Setting up Environment Variables on Vercel
+- **Issue**: `Cannot find package 'globals' imported from eslint.config.js`
+- **Solution**: Replaced Vite-style ESLint config with Next.js standard `.eslintrc.js`
+- **Files Changed**:
+  - Removed: `eslint.config.js`
+  - Added: `.eslintrc.js` with Next.js compatibility
 
-1. Go to your Vercel project dashboard
-2. Navigate to **Settings** → **Environment Variables**
-3. Click **Add** and enter each variable:
+### 2. Suspense Boundary Fix
 
-**Variable 1:**
+- **Issue**: `useSearchParams() should be wrapped in a suspense boundary`
+- **Solution**: Wrapped the payment success page component in `<Suspense>`
+- **Files Changed**:
+  - `app/payment-success/page.tsx` - Added Suspense wrapper and dynamic rendering
+
+### 3. Static Generation Configuration
+
+- **Added**: `export const dynamic = 'force-dynamic'` to payment-success page
+- **Reason**: Prevents static generation issues with dynamic search parameters
+
+## Deployment Steps
+
+### 1. Connect to Vercel
+
+1. Go to [vercel.com](https://vercel.com)
+2. Sign in with GitHub
+3. Click "New Project"
+4. Import your GitHub repository: `VivekRai-20/ActingWorkshop`
+
+### 2. Configure Environment Variables
+
+Set the following environment variables in Vercel dashboard:
 
 ```
-Name: RAZORPAY_KEY_ID
-Value: rzp_test_XXXXXXXXXXXXXXXX  (your actual key)
-Environment: Production, Preview, Development (select all)
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_secret_key
 ```
 
-**Variable 2:**
+**Important**: Use test credentials for development and production credentials for live deployment.
+
+### 3. Build Configuration
+
+Vercel will automatically detect Next.js and use the following settings:
+
+- Build Command: `npm run build`
+- Output Directory: `.next`
+- Node.js Version: 18.x
+
+### 4. Domain Configuration
+
+1. After successful deployment, Vercel will provide a URL like: `https://your-app.vercel.app`
+2. Optionally, configure a custom domain in the Vercel dashboard
+
+## Payment Integration Testing
+
+### Test Credentials
+
+Use these Razorpay test credentials for testing:
+
+- **Card Number**: 4111 1111 1111 1111
+- **Expiry**: Any future date
+- **CVV**: Any 3 digits
+- **Name**: Any valid name
+
+### Testing Flow
+
+1. Navigate to the deployed application
+2. Click "Join Workshop Now"
+3. Fill in customer details
+4. Use test payment credentials
+5. Verify payment success page and invoice download
+
+## File Structure
 
 ```
-Name: RAZORPAY_KEY_SECRET
-Value: XXXXXXXXXXXXXXXXXXXXXXXX  (your actual secret)
-Environment: Production, Preview, Development (select all)
+ActingWorkshop/
+├── app/
+│   ├── api/
+│   │   ├── create-order/route.ts      # Payment order creation
+│   │   ├── payment-success/route.ts   # Payment verification
+│   │   └── invoice/[paymentId]/route.ts # Invoice generation
+│   ├── payment-success/
+│   │   └── page.tsx                   # Payment success page (with Suspense)
+│   ├── globals.css                    # Global styles with dark mode
+│   ├── layout.tsx                     # Root layout
+│   └── page.tsx                       # Home page
+├── components/                        # React components
+├── lib/                              # Utility functions
+├── public/assets/                    # Static assets
+├── .eslintrc.js                      # ESLint configuration
+├── vercel.json                       # Vercel deployment config
+└── next.config.mjs                   # Next.js configuration
 ```
 
-4. Click **Save** for each variable
-5. Redeploy your project (should happen automatically)
+## Troubleshooting
 
-### How to get Razorpay Credentials
+### Common Issues
 
-1. Sign up/login to [Razorpay Dashboard](https://dashboard.razorpay.com/)
-2. Go to **Settings** → **API Keys**
-3. Generate API Keys (use Test Mode for testing)
-4. Copy the Key ID and Key Secret
+1. **Environment Variables Not Working**
 
-### Test vs Live Mode
+   - Ensure variables are set in Vercel dashboard
+   - Redeploy after adding environment variables
 
-- **Test Mode**: Use `rzp_test_` keys for testing
-- **Live Mode**: Use `rzp_live_` keys for production
+2. **Payment Gateway Errors**
 
-### Deployment Steps
+   - Verify Razorpay credentials
+   - Check API route logs in Vercel dashboard
 
-1. Commit all changes to your GitHub repository
-2. Push to GitHub:
-   ```bash
-   git add .
-   git commit -m "Add Vercel serverless functions for payments"
-   git push origin main
-   ```
-3. Redeploy on Vercel (should happen automatically)
-4. Add environment variables in Vercel dashboard
-5. Test the payment functionality
+3. **Static Generation Errors**
+   - Ensure `dynamic = 'force-dynamic'` is set for pages using search params
+   - Check for proper Suspense boundaries around client-side hooks
 
-### Testing Payment
+### Monitoring
 
-1. Use Razorpay test card: `4111 1111 1111 1111`
-2. Use any future expiry date
-3. Use any 3-digit CVV
-4. Use any valid name
+- Check deployment logs in Vercel dashboard
+- Monitor function logs for API routes
+- Use Vercel Analytics for performance monitoring
 
-### Troubleshooting
+## Post-Deployment Checklist
 
-- Check Vercel function logs in the dashboard
-- Ensure environment variables are properly set
-- Verify Razorpay webhook URLs if needed
-- Check browser network tab for API errors
+- [ ] Verify home page loads correctly
+- [ ] Test payment flow with test credentials
+- [ ] Check invoice generation and download
+- [ ] Verify dark mode functionality
+- [ ] Test responsive design on mobile
+- [ ] Check all navigation links
+- [ ] Verify environment variables are working
 
-### Important Notes
+## Support
 
-- Email functionality is disabled in this Vercel setup
-- Invoice generation is temporarily unavailable
-- Customer data is validated but not permanently stored
-- Consider integrating with a database service for production use
+For deployment issues:
+
+1. Check Vercel deployment logs
+2. Verify all environment variables are set
+3. Ensure the latest code is pushed to GitHub
+4. Contact support if Razorpay integration issues persist
+
+---
+
+**Last Updated**: January 2025
+**Next.js Version**: 15.1.0
+**Vercel**: Latest
