@@ -1,92 +1,189 @@
-# Character Decode Camp Workshop
+# Acting Workshop by Praveen Hingonia 🎭
 
-## Project info
+A comprehensive React-based web application for an acting workshop featuring payment integration, testimonials, and interactive content.
+
+## 🌟 Features
+
+- **Interactive Hero Section** with video background and workshop highlights
+- **Payment Integration** with Razorpay for seamless transactions
+- **Customer Registration** with detailed form collection
+- **Testimonials Gallery** showcasing student success stories
+- **Workshop Schedule** with detailed curriculum breakdown
+- **Awards & Recognition** gallery highlighting achievements
+- **Navras (Nine Emotions)** interactive section
+- **FAQ Section** addressing common queries
+- **Countdown Timer** for workshop registration
+- **Email Notifications** with PDF invoice generation
+- **Responsive Design** optimized for all devices
+
+## 🚀 Live Demo
 
 **URL**: https://lovable.dev/projects/a3787543-255d-44b6-bbae-6bdc702665b6
 
-## Email Configuration
+## 💰 Payment Integration
 
-This project uses Gmail for sending confirmation emails and invoices. To enable email functionality:
+This project integrates Razorpay for secure payment processing:
+- Workshop fee: ₹2999 (₹1999 after discount)
+- Automatic invoice generation and email delivery
+- Payment confirmation with customer details collection
 
-1. Update the `.env` file in the `server` directory with your Gmail credentials:
-   ```
+## 📧 Email Configuration
+
+The application uses Gmail SMTP for sending confirmation emails and invoices:
+
+1. Create a `.env` file in the `server` directory:
+   ```env
    EMAIL_USER=your-email@gmail.com
    EMAIL_PASS=your-app-password
    ADMIN_EMAIL=admin-email@gmail.com
+   RAZORPAY_KEY_ID=your-razorpay-key-id
+   RAZORPAY_KEY_SECRET=your-razorpay-secret
    ```
 
-2. For `EMAIL_PASS`, you need to use an App Password, not your regular Gmail password:
-   - Go to your Google Account > Security > 2-Step Verification
-   - At the bottom, select "App passwords"
-   - Create a new app password for "Mail"
-   - Copy the generated 16-character password (without spaces)
+2. For Gmail App Password setup:
+   - Enable 2-Step Verification in your Google Account
+   - Generate an App Password for Mail
+   - Use the 16-character password in the `.env` file
 
-3. If emails are not being sent, check the server logs for specific error messages
+3. Invoice PDFs are automatically generated and stored in `server/invoices/`
 
-## How can I edit this code?
+## 🛠️ Local Development Setup
 
-There are several ways of editing your application.
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn package manager
+- Git
 
-**Use Lovable**
+### Installation Steps
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a3787543-255d-44b6-bbae-6bdc702665b6) and start prompting.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/VivekRai-20/ActingWorkshop.git
+   cd ActingWorkshop
+   ```
 
-Changes made via Lovable will be committed automatically to this repo.
+2. **Install frontend dependencies:**
+   ```bash
+   npm install
+   ```
 
-**Use your preferred IDE**
+3. **Install server dependencies:**
+   ```bash
+   cd server
+   npm install
+   cd ..
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+4. **Set up environment variables:**
+   - Create `server/.env` with your configuration (see Email Configuration section)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+5. **Start development servers:**
+   
+   **Frontend (Vite dev server):**
+   ```bash
+   npm run dev
+   ```
+   
+   **Backend (Express server):**
+   ```bash
+   cd server
+   npm start
+   ```
 
-Follow these steps:
+6. **Access the application:**
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:3001
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 🔄 Development Workflow
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+**Using Lovable IDE:**
+- Visit [Lovable Project](https://lovable.dev/projects/a3787543-255d-44b6-bbae-6bdc702665b6)
+- Changes sync automatically with this repository
 
-# Step 3: Install the necessary dependencies.
-npm i
+**Using Local IDE:**
+- Make changes locally and push to GitHub
+- Changes will reflect in Lovable automatically
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## 🧰 Technology Stack
+
+### Frontend
+- **React 18** - Modern React with hooks and context
+- **TypeScript** - Type-safe JavaScript development
+- **Vite** - Fast build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Beautiful and accessible UI components
+- **Lucide React** - Icon library
+- **React Router** - Client-side routing
+
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web framework
+- **Nodemailer** - Email sending functionality
+- **PDFKit** - PDF generation for invoices
+- **CORS** - Cross-origin resource sharing
+
+### Payment & Services
+- **Razorpay** - Payment gateway integration
+- **Gmail SMTP** - Email delivery service
+
+### Development Tools
+- **ESLint** - Code linting
+- **PostCSS** - CSS processing
+- **Git** - Version control
+
+## 📁 Project Structure
+
+```
+ActingWorkshop/
+├── src/
+│   ├── components/          # React components
+│   │   ├── ui/             # shadcn/ui components
+│   │   ├── HeroSection.tsx # Landing hero section
+│   │   ├── PaymentConfirmation.tsx
+│   │   ├── TestimonialsSection.tsx
+│   │   └── ...
+│   ├── pages/              # Page components
+│   ├── assets/             # Images and media files
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utility functions
+│   └── types/              # TypeScript definitions
+├── server/                 # Backend Express server
+│   ├── index.js           # Server entry point
+│   ├── invoice.js         # PDF invoice generation
+│   └── package.json       # Server dependencies
+├── public/                 # Static assets
+└── README.md              # This file
 ```
 
-**Edit a file directly in GitHub**
+## 🚀 Deployment Options
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Lovable Platform (Recommended)
+1. Visit [Lovable Project](https://lovable.dev/projects/a3787543-255d-44b6-bbae-6bdc702665b6)
+2. Click Share → Publish
+3. Configure custom domain in Project → Settings → Domains
 
-**Use GitHub Codespaces**
+### Manual Deployment
+1. **Frontend**: Deploy to Vercel, Netlify, or similar
+2. **Backend**: Deploy to Heroku, Railway, or similar Node.js hosting
+3. Update API endpoints in frontend configuration
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🌐 Custom Domain Setup
 
-## What technologies are used for this project?
+Connect your custom domain through Lovable:
+- Navigate to Project → Settings → Domains
+- Click "Connect Domain"
+- Follow the [custom domain guide](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
 
-This project is built with:
+## 📄 License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is private and proprietary. All rights reserved.
 
-## How can I deploy this project?
+## 👥 Contact
 
-Simply open [Lovable](https://lovable.dev/projects/a3787543-255d-44b6-bbae-6bdc702665b6) and click on Share -> Publish.
+For questions about the Acting Workshop:
+- **Instructor**: Praveen Hingonia
+- **Repository**: [GitHub](https://github.com/VivekRai-20/ActingWorkshop)
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+*Built with ❤️ for aspiring actors*
