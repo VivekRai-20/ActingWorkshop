@@ -1,10 +1,13 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Download, CheckCircle } from "lucide-react";
 
-export default function PaymentSuccess() {
+// Force dynamic rendering to avoid static generation issues
+export const dynamic = 'force-dynamic';
+
+function PaymentSuccessContent() {
   const [paymentDetails, setPaymentDetails] = useState<{
     paymentId: string;
     orderId: string;
@@ -126,5 +129,21 @@ export default function PaymentSuccess() {
         </div>
       </div>
     </div>
+  );
+}
+
+function PaymentSuccessLoading() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
+    </div>
+  );
+}
+
+export default function PaymentSuccess() {
+  return (
+    <Suspense fallback={<PaymentSuccessLoading />}>
+      <PaymentSuccessContent />
+    </Suspense>
   );
 }
