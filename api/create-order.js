@@ -24,6 +24,17 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Check if environment variables are set
+  if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+    console.error('Missing Razorpay environment variables:', {
+      hasKeyId: !!process.env.RAZORPAY_KEY_ID,
+      hasKeySecret: !!process.env.RAZORPAY_KEY_SECRET
+    });
+    return res.status(500).json({ 
+      error: 'Payment service configuration error. Please contact support.' 
+    });
+  }
+
   try {
     const { amount, name, email, phone } = req.body;
     
@@ -50,6 +61,9 @@ module.exports = async function handler(req, res) {
     });
   } catch (err) {
     console.error("Order creation error:", err);
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ 
+      error: err.message,
+      details: 'Failed to create payment order. Please try again.'
+    });
   }
 }

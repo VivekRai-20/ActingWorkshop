@@ -72,6 +72,10 @@ export async function startRazorpayCheckout({
     const data = await resp.json();
     console.log("Order created response:", data);
     
+    if (!resp.ok) {
+      throw new Error(`API Error: ${data.error || `HTTP ${resp.status}`}`);
+    }
+    
     if (!data || !data.orderId) {
       throw new Error("Order creation failed: " + (data?.error || "No order ID returned"));
     }
