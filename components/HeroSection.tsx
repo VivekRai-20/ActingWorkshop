@@ -14,6 +14,23 @@ const HeroSection = () => {
   const [showDetailsForm, setShowDetailsForm] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Function to generate thumbnail URL from Cloudinary video URL
+  const generateThumbnailUrl = (videoUrl: string) => {
+    try {
+      // Extract the public ID (filename without extension and version)
+      const urlParts = videoUrl.split('/');
+      const filename = urlParts[urlParts.length - 1];
+      const publicId = filename.split('.')[0]; // Remove extension
+      
+      // Create thumbnail URL
+      const baseUrl = videoUrl.substring(0, videoUrl.indexOf('/video/upload/') + 14);
+      return `${baseUrl}f_auto,q_auto,w_600,h_400,c_fill/${publicId}.jpg`;
+    } catch (error) {
+      // Fallback to empty poster if URL generation fails
+      return "";
+    }
+  };
+
   const handleVideoPlay = () => {
     if (videoRef.current) {
       if (isVideoPlaying) {
@@ -117,6 +134,7 @@ const HeroSection = () => {
                   controls={false}
                   onClick={handleVideoPlay}
                   style={{ cursor: "pointer" }}
+                  poster={generateThumbnailUrl("https://res.cloudinary.com/dm5syomje/video/upload/v1757100071/Hero_1_afzqix.mp4")}
                 />
                 {/* Video Controls */}
                 <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 flex space-x-1 sm:space-x-2">
