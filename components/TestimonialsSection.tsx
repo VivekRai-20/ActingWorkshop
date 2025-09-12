@@ -59,6 +59,7 @@ const TestimonialsSection = () => {
               className="relative group cursor-pointer bg-neutral-900 border border-gray-700 overflow-hidden"
               onClick={() => setSelectedVideo(testimonial.file)}
             >
+              {/* Video with attributes optimized for all devices including iOS */}
               <video
                 src={testimonial.file}
                 className="aspect-video w-full object-cover"
@@ -66,6 +67,7 @@ const TestimonialsSection = () => {
                 playsInline
                 muted
                 loop
+                poster="" // Empty poster to prevent default poster loading
               />
               {/* Play icon overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
