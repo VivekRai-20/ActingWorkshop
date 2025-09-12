@@ -16,7 +16,9 @@ const CustomerDetailsForm = ({ isOpen, onClose, amount }: CustomerDetailsFormPro
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    agreeToPrivacyPolicy: false,
+    optOutMarketing: false
   });
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<{[key: string]: string}>({});
@@ -38,6 +40,10 @@ const CustomerDetailsForm = ({ isOpen, onClose, amount }: CustomerDetailsFormPro
       newErrors.phone = 'Phone number is required';
     } else if (!/^[6-9]\d{9}$/.test(formData.phone.replace(/\D/g, ''))) {
       newErrors.phone = 'Please enter a valid 10-digit phone number';
+    }
+    
+    if (!formData.agreeToPrivacyPolicy) {
+      newErrors.agreeToPrivacyPolicy = 'You must agree to the Privacy Policy';
     }
     
     setErrors(newErrors);
@@ -69,7 +75,7 @@ const CustomerDetailsForm = ({ isOpen, onClose, amount }: CustomerDetailsFormPro
     }
   };
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: '' }));
@@ -154,6 +160,45 @@ const CustomerDetailsForm = ({ isOpen, onClose, amount }: CustomerDetailsFormPro
                 disabled={isLoading}
               />
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+            </div>
+
+            <div className="flex items-start">
+              <div className="flex items-center h-5">
+                <input
+                  id="privacy-policy"
+                  name="privacy-policy"
+                  type="checkbox"
+                  checked={formData.agreeToPrivacyPolicy}
+                  onChange={(e) => handleInputChange('agreeToPrivacyPolicy', e.target.checked)}
+                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                  disabled={isLoading}
+                />
+              </div>
+              <div className="ml-3 text-sm">
+                <label htmlFor="privacy-policy" className="font-medium text-gray-700">
+                  I agree to the <a href="/privacy-policy" target="_blank" className="text-blue-600 hover:underline">Privacy Policy</a> *
+                </label>
+                {errors.agreeToPrivacyPolicy && <p className="text-red-500 text-xs mt-1">{errors.agreeToPrivacyPolicy}</p>}
+              </div>
+            </div>
+
+            <div className="flex items-start">
+              <div className="flex items-center h-5">
+                <input
+                  id="opt-out-marketing"
+                  name="opt-out-marketing"
+                  type="checkbox"
+                  checked={formData.optOutMarketing}
+                  onChange={(e) => handleInputChange('optOutMarketing', e.target.checked)}
+                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                  disabled={isLoading}
+                />
+              </div>
+              <div className="ml-3 text-sm">
+                <label htmlFor="opt-out-marketing" className="font-medium text-gray-700">
+                  Please tick this box if you do not wish to be contacted for marketing purposes
+                </label>
+              </div>
             </div>
 
             <div className="flex gap-3 pt-4">

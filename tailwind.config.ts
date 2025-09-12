@@ -20,9 +20,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-      montserrat: ["Montserrat", "sans-serif"],
-      'roboto-slab': ["Roboto Slab", "serif"],
-    },
+				montserrat: ["Montserrat", "sans-serif"],
+				'roboto-slab': ["Roboto Slab", "serif"],
+				'times-new-roman': ["Times New Roman", "Times", "serif"],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -99,9 +100,9 @@ export default {
 			},
 			keyframes: {
 				marquee: {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-50%)" }, 
-        },
+					"0%": { transform: "translateX(0%)" },
+					"100%": { transform: "translateX(-50%)" }, 
+				},
 				'accordion-down': {
 					from: {
 						height: '0'

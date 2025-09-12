@@ -133,9 +133,10 @@ All colors MUST be HSL.
     @apply bg-background text-foreground font-montserrat;
   }
   
-  /* Apply Roboto Slab font to all headings */
+  /* Apply Times New Roman font with semi-bold 600 weight to all headings */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
   }
 }
 

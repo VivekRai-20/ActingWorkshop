@@ -1,9 +1,10 @@
 'use client';
 
 import { Button } from "@/components/ui/button";
-import { Play, Mail, Phone, MapPin, Instagram, Youtube, Facebook } from "lucide-react";
+import { Play, Mail, Instagram, Youtube, Facebook } from "lucide-react";
 import { useState } from "react";
 import CustomerDetailsForm from "./CustomerDetailsForm";
+import Link from "next/link";
 
 const Footer = () => {
   const [showDetailsForm, setShowDetailsForm] = useState(false);
@@ -79,14 +80,6 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-navy-light mr-3 mt-1 flex-shrink-0" />
                 <span className="text-navy-light text-sm break-all">praveenhingoniavision@gmail.com</span>
               </div>
-              <div className="flex items-center">
-                <Phone className="h-5 w-5 text-navy-light mr-3" />
-                <span className="text-navy-light">+91 98765 43210</span>
-              </div>
-              <div className="flex items-center">
-                <MapPin className="h-5 w-5 text-navy-light mr-3" />
-                <span className="text-navy-light">Mumbai, India</span>
-              </div>
             </div>
 
             {/* Social Links */}
@@ -141,7 +134,9 @@ const Footer = () => {
         <div className="border-t border-navy-light/20 mt-12 pt-8 text-center">
           <p className="text-navy-light">
             © 2024 ActingMaster by Praveen Hingonia. All rights reserved. | 
-            <span className="mx-2">Privacy Policy</span> | 
+            <Link href="/privacy-policy" className="mx-2 hover:text-white transition-colors">
+              Privacy Policy
+            </Link> | 
             <span className="mx-2">Terms of Service</span>
           </p>
          </div>

@@ -18,12 +18,12 @@ const CountdownSection = () => {
   };
 
   useEffect(() => {
-    // Workshop starts on September 29th at 10 AM
-    const challengeDate = new Date(2025, 8, 29, 10, 0, 0, 0); // Month is 0-indexed, so 8 = September
+    // Workshop starts on September 26th at 10 AM
+    const workshopDate = new Date(2025, 8, 26, 10, 0, 0, 0); // Month is 0-indexed, so 8 = September
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
-      const distance = challengeDate.getTime() - now;
+      const distance = workshopDate.getTime() - now;
 
       if (distance > 0) {
         setTimeLeft({
@@ -46,16 +46,26 @@ const CountdownSection = () => {
         
         {/* Top Heading */}
         <h3 className="text-gray-800 text-base sm:text-lg md:text-xl font-semibold mb-3">
-          Secure Your Spot in the 3-Day Acting Workshop
+          Secure Your Spot in the Online 3-Day Acting Workshop
         </h3>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 uppercase leading-snug">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 uppercase leading-snug">
           FOR A SPECIAL <span className="text-blue-600">ONE-TIME PAYMENT</span>{" "}
           OF JUST RS 299!
         </h2>
+        
+        {/* Workshop Dates */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+          <p className="text-blue-800 font-bold text-lg sm:text-xl">
+            Workshop Dates: September 26th, 27th & 29th, 2025
+          </p>
+          <p className="text-blue-700 text-sm sm:text-base mt-1">
+            Online Workshop - 10:00 AM IST Each Day
+          </p>
+        </div>
 
         {/* Countdown */}
         <p className="text-gray-700 font-medium mb-4 text-base sm:text-lg">
-          Challenge Starts In:
+          Workshop Starts In:
         </p>
         <div className="flex justify-center space-x-4 sm:space-x-6 mb-6">
           {[

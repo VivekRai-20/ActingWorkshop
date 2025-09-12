@@ -52,29 +52,31 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Videos Grid */}
-<div className="grid md:grid-cols-3 gap-8 mb-16">
-  {videoTestimonials.map((testimonial, index) => (
-    <Card
-      key={index}
-      className="relative group cursor-pointer bg-neutral-900 border border-gray-700 overflow-hidden"
-      onClick={() => setSelectedVideo(testimonial.file)}
-    >
-      <video
-        src={testimonial.file}
-        className="aspect-video w-full object-cover"
-        preload="metadata"
-      />
-      {/* Play icon overlay */}
-      <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
-        <Play className="h-14 w-14 text-white drop-shadow-lg" />
-      </div>
-      <div className="p-4 text-center text-white font-semibold">
-        {testimonial.name}
-      </div>
-    </Card>
-  ))}
-</div>
-
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {videoTestimonials.map((testimonial, index) => (
+            <Card
+              key={index}
+              className="relative group cursor-pointer bg-neutral-900 border border-gray-700 overflow-hidden"
+              onClick={() => setSelectedVideo(testimonial.file)}
+            >
+              <video
+                src={testimonial.file}
+                className="aspect-video w-full object-cover"
+                preload="metadata"
+                playsInline
+                muted
+                loop
+              />
+              {/* Play icon overlay */}
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                <Play className="h-14 w-14 text-white drop-shadow-lg" />
+              </div>
+              <div className="p-4 text-center text-white font-semibold">
+                {testimonial.name}
+              </div>
+            </Card>
+          ))}
+        </div>
 
         {/* Chat Screenshots Grid */}
         <div className="grid md:grid-cols-3 gap-6">
@@ -93,31 +95,30 @@ const TestimonialsSection = () => {
         </div>
       </div>
 
-{/* Video Modal */}
-{selectedVideo && (
-  <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 px-4">
-    <div className="relative w-full max-w-3xl bg-black rounded-lg overflow-hidden shadow-xl">
-      {/* Video inside container */}
-      <video
-        controls
-        autoPlay
-        className="w-full max-h-[80vh] mx-auto block object-contain"
-      >
-        <source src={selectedVideo} type="video/mp4" />
-      </video>
+      {/* Video Modal */}
+      {selectedVideo && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 px-4">
+          <div className="relative w-full max-w-3xl bg-black rounded-lg overflow-hidden shadow-xl">
+            {/* Video inside container */}
+            <video
+              controls
+              autoPlay
+              playsInline
+              className="w-full max-h-[80vh] mx-auto block object-contain"
+            >
+              <source src={selectedVideo} type="video/mp4" />
+            </video>
 
-      {/* Close button */}
-      <button
-        onClick={() => setSelectedVideo(null)}
-        className="absolute top-3 right-3 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md hover:bg-gray-200"
-      >
-        ✕
-      </button>
-    </div>
-  </div>
-)}
-
-
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedVideo(null)}
+              className="absolute top-3 right-3 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md hover:bg-gray-200"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
