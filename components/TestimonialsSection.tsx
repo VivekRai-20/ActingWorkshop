@@ -30,6 +30,23 @@ const TestimonialsSection = () => {
     { name: "Dayanand Shetty", file: "https://res.cloudinary.com/dm5syomje/video/upload/v1757100128/DayanandShetty_xtwo5t.mp4" },
   ];
 
+  // Function to generate thumbnail URL from Cloudinary video URL
+  const generateThumbnailUrl = (videoUrl: string) => {
+    try {
+      // Extract the public ID (filename without extension and version)
+      const urlParts = videoUrl.split('/');
+      const filename = urlParts[urlParts.length - 1];
+      const publicId = filename.split('.')[0]; // Remove extension
+      
+      // Create thumbnail URL
+      const baseUrl = videoUrl.substring(0, videoUrl.indexOf('/video/upload/') + 14);
+      return `${baseUrl}f_auto,q_auto,w_600,h_400,c_fill/${publicId}.jpg`;
+    } catch (error) {
+      // Fallback to empty poster if URL generation fails
+      return "";
+    }
+  };
+
   const chatTestimonials = [
     "/assets/testimonials/chat1.jpg",
     "/assets/testimonials/chat2.jpg",
@@ -67,7 +84,7 @@ const TestimonialsSection = () => {
                   playsInline
                   muted
                   loop
-                  poster="" // Empty poster to prevent default poster loading
+                  poster={generateThumbnailUrl(testimonial.file)}
                 />
               </div>
               {/* Play icon overlay */}
@@ -119,6 +136,7 @@ const TestimonialsSection = () => {
                 autoPlay
                 playsInline
                 className="w-full h-full object-contain"
+                poster={selectedVideo ? generateThumbnailUrl(selectedVideo) : ""}
               >
                 <source src={selectedVideo} type="video/mp4" />
               </video>
