@@ -17,8 +17,8 @@ import Navras from "@/components/Navras";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
-      <main>
+    <div className="min-h-screen flex flex-col">
+      <main className="flex-grow">
         <HeroSection />
         <CountdownSection />
         <WorkshopContent />

@@ -47,7 +47,7 @@ const HeroSection = () => {
               Decode Acting in <span className="text-blue-600">3 Days</span>
             </h1>
             <p className="text-base sm:text-lg md:text-2xl lg:text-3xl text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-              An affordable workshop for kids who dream big but can’t afford expensive acting courses.
+              An affordable workshop for kids who dream big but can't afford expensive acting courses.
             </p>
             <p className="italic text-blue-700 font-medium mb-6 sm:mb-8 text-sm sm:text-base md:text-xl lg:text-2xl">
               "Acting for everyone — learn to decode characters in just 3 days."
@@ -95,7 +95,7 @@ const HeroSection = () => {
                 <span className="font-semibold">Praveen Hingonia</span> — Actor | Writer | Director | Producer
               </p>
               <p className="text-gray-600 text-xs sm:text-sm md:text-lg lg:text-xl leading-relaxed">
-                With over 25 years of experience in the Indian film & television industry, I’ve acted, written, directed, 
+                With over 25 years of experience in the Indian film & television industry, I've acted, written, directed, 
                 and produced acclaimed projects. My unique method <span className="font-semibold">Character Decoding</span> 
                 helps aspiring actors break down and inhabit roles naturally.  
                 <br className="hidden sm:block" />Now, I'm bringing this affordable 3-day workshop to kids who dream of acting but can't access expensive schools.  
@@ -105,32 +105,9 @@ const HeroSection = () => {
           </div>
 
           {/* Video Section */}
-          <div className="relative animate-scale-in order-2 lg:order-2">
-            {/* Logos Section - Above Video */}
-            <div className="mb-8 flex justify-center items-center space-x-6 animate-fade-in">
-              <div className="group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 rounded-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
-                <div className="relative flex items-center justify-center bg-black rounded-xl p-3 sm:p-4 shadow-2xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/25">
-                  <img 
-                    src="/assets/praveenHingoniaVision.png" 
-                    alt="Praveen Hingonia Vision" 
-                    className="h-20 w-auto sm:h-12 md:h-14 lg:h-18 xl:h-40 xl:w-40 object-cover filter brightness-110 contrast-110"
-                  />
-                </div>
-              </div>
-              
-              <div className="group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-800 rounded-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
-                <div className="relative flex items-center justify-center bg-black rounded-xl p-3 sm:p-4 shadow-2xl border border-gray-700 hover:border-purple-500 transition-all duration-300 hover:scale-105 hover:shadow-purple-500/25">
-                  <img 
-                    src="/assets/productions.png" 
-                    alt="Productions" 
-                    className="h-20 sm:h-12 md:h-14 lg:h-18 xl:h-40 xl:w-60 object-contain filter brightness-110 contrast-110"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-r from-[#0a1a2f] via-[#0b2d4d] to-[#001f3f] p-4 sm:p-6 border border-gray-700 hover:border-blue-500/50 transition-all duration-300">
+          <div className="relative animate-scale-in order-2 lg:order-2 flex flex-col h-full">
+            
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-r from-[#0a1a2f] via-[#0b2d4d] to-[#001f3f] p-4 sm:p-6 border border-gray-700 hover:border-blue-500/50 transition-all duration-300 flex-grow">
               <div className="relative aspect-video bg-black/30 rounded-xl overflow-hidden">
                 <video
                   ref={videoRef}
@@ -175,6 +152,48 @@ const HeroSection = () => {
                 <p className="text-blue-300 text-xs sm:text-xs md:text-sm lg:text-base mt-1">
                   - Praveen Hingonia
                 </p>
+              </div>
+              
+              {/* Workshop Dates Section */}
+              <div className="mt-6 bg-blue-900/30 rounded-xl p-4 border border-blue-700/50">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white text-center mb-3">
+                  Workshop Dates
+                </h3>
+                <div className="grid grid-cols-3 gap-2 text-center">
+                  <div className="bg-blue-800/50 rounded-lg p-2">
+                    <div className="text-white font-semibold text-xs sm:text-sm">Sep 26</div>
+                    <div className="text-blue-300 text-xs">Fri</div>
+                    <div className="text-blue-200 text-xs">10 AM</div>
+                  </div>
+                  <div className="bg-blue-800/50 rounded-lg p-2">
+                    <div className="text-white font-semibold text-xs sm:text-sm">Sep 27</div>
+                    <div className="text-blue-300 text-xs">Sat</div>
+                    <div className="text-blue-200 text-xs">10 AM</div>
+                  </div>
+                  <div className="bg-blue-800/50 rounded-lg p-2">
+                    <div className="text-white font-semibold text-xs sm:text-sm">Sep 29</div>
+                    <div className="text-blue-300 text-xs">Mon</div>
+                    <div className="text-blue-200 text-xs">10 AM</div>
+                  </div>
+                </div>
+                <div className="mt-3 text-center">
+                  <span className="inline-flex items-center bg-green-900/50 text-green-300 px-2 py-1 rounded-full text-xs">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-1"></div>
+                    Online Workshop
+                  </span>
+                  <p className="text-blue-200 text-xs mt-1">Join from anywhere</p>
+                </div>
+              </div>
+              
+              {/* Logo Section */}
+              <div className="mt-4 flex justify-center">
+                <div className="flex items-center justify-center p-1">
+                  <img 
+                    src="/assets/praveenHingoniaVision.png" 
+                    alt="Praveen Hingonia Vision" 
+                    className="h-12 sm:h-16 md:h-20 w-auto object-contain"
+                  />
+                </div>
               </div>
             </div>
           </div>

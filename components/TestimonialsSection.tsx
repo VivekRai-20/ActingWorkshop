@@ -35,15 +35,14 @@ const TestimonialsSection = () => {
     "/assets/testimonials/chat2.jpg",
     "/assets/testimonials/chat3.jpg",
     "/assets/testimonials/chat4.jpg",
-    "/assets/testimonials/chat5.jpg",
-    "/assets/testimonials/chat6.jpg",
+    
   ];
 
   return (
     <section className="py-20 bg-neutral-950">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             What <span className="text-blue-500">Actors</span> Say
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
@@ -52,26 +51,30 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Videos Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {videoTestimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="relative group cursor-pointer bg-neutral-900 border border-gray-700 overflow-hidden"
+              className="relative group cursor-pointer bg-neutral-900 border border-gray-700 overflow-hidden rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20"
               onClick={() => setSelectedVideo(testimonial.file)}
             >
               {/* Video with attributes optimized for all devices including iOS */}
-              <video
-                src={testimonial.file}
-                className="aspect-video w-full object-cover"
-                preload="metadata"
-                playsInline
-                muted
-                loop
-                poster="" // Empty poster to prevent default poster loading
-              />
+              <div className="aspect-video w-full overflow-hidden">
+                <video
+                  src={testimonial.file}
+                  className="w-full h-full object-cover"
+                  preload="metadata"
+                  playsInline
+                  muted
+                  loop
+                  poster="" // Empty poster to prevent default poster loading
+                />
+              </div>
               {/* Play icon overlay */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Play className="h-14 w-14 text-white drop-shadow-lg" />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="bg-blue-500 rounded-full p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  <Play className="h-8 w-8 text-white" />
+                </div>
               </div>
               <div className="p-4 text-center text-white font-semibold">
                 {testimonial.name}
@@ -80,41 +83,51 @@ const TestimonialsSection = () => {
           ))}
         </div>
 
-        {/* Chat Screenshots Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {chatTestimonials.map((chat, index) => (
-            <Card
-              key={index}
-              className="overflow-hidden bg-neutral-900 border border-gray-700"
-            >
-              <img
-                src={chat}
-                alt={`Chat testimonial ${index + 1}`}
-                className="w-full h-auto object-contain"
-              />
-            </Card>
-          ))}
+        {/* Chat Screenshots Section */}
+        <div className="mb-8">
+          <div className="flex items-center justify-center mb-6">
+            <MessageSquare className="h-6 w-6 text-blue-500 mr-2" />
+            <h3 className="text-2xl font-bold text-white">Chat Testimonials</h3>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {chatTestimonials.map((chat, index) => (
+              <Card
+                key={index}
+                className="overflow-hidden bg-neutral-900 border border-gray-700 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20"
+              >
+                <div className="aspect-square w-full overflow-hidden">
+                  <img
+                    src={chat}
+                    alt={`Chat testimonial ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Video Modal */}
       {selectedVideo && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 px-4">
-          <div className="relative w-full max-w-3xl bg-black rounded-lg overflow-hidden shadow-xl">
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 px-4 backdrop-blur-sm">
+          <div className="relative w-full max-w-4xl bg-neutral-900 rounded-xl overflow-hidden shadow-2xl border border-gray-700">
             {/* Video inside container */}
-            <video
-              controls
-              autoPlay
-              playsInline
-              className="w-full max-h-[80vh] mx-auto block object-contain"
-            >
-              <source src={selectedVideo} type="video/mp4" />
-            </video>
+            <div className="aspect-video w-full">
+              <video
+                controls
+                autoPlay
+                playsInline
+                className="w-full h-full object-contain"
+              >
+                <source src={selectedVideo} type="video/mp4" />
+              </video>
+            </div>
 
             {/* Close button */}
             <button
               onClick={() => setSelectedVideo(null)}
-              className="absolute top-3 right-3 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md hover:bg-gray-200"
+              className="absolute top-4 right-4 bg-white/10 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold shadow-md hover:bg-white/20 backdrop-blur-sm transition-all duration-200"
             >
               ✕
             </button>

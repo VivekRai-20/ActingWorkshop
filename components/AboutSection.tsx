@@ -66,7 +66,7 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-20 bg-white relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* About Content */}
           <div className="animate-fade-in">
             <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6">
@@ -105,11 +105,45 @@ const AboutSection = () => {
             >
               <span className="block sm:inline leading-tight">Learn From Experience</span>
             </Button>
+            
+            {/* Unique Method Section - Keep it in the left column */}
+            <div className="mt-12">
+              <Card className="bg-blue-50 shadow-md rounded-2xl p-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                  My Unique Method — Character Decoding
+                </h3>
+                <p className="text-base md:text-lg text-gray-700 mb-6 leading-relaxed">
+                  I've developed a proven approach to help actors quickly understand
+                  their roles, connect emotionally, and perform naturally — without
+                  years of expensive training.
+                </p>
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="text-center">
+                    <Brain className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 text-blue-600" />
+                    <h4 className="text-sm md:text-base font-semibold text-gray-900">
+                      Decode
+                    </h4>
+                  </div>
+                  <div className="text-center">
+                    <Heart className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 text-blue-600" />
+                    <h4 className="text-sm md:text-base font-semibold text-gray-900">
+                      Connect
+                    </h4>
+                  </div>
+                  <div className="text-center">
+                    <Star className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 text-blue-600" />
+                    <h4 className="text-sm md:text-base font-semibold text-gray-900">
+                      Perform
+                    </h4>
+                  </div>
+                </div>
+              </Card>
+            </div>
           </div>
 
           {/* Photo and Stats - Dark Theme */}
           <div className="animate-scale-in">
-            <Card className="bg-neutral-900 shadow-lg rounded-2xl p-8 text-center border border-gray-700">
+            <Card className="bg-neutral-900 shadow-lg rounded-2xl p-8 text-center border border-gray-700 h-full flex flex-col">
               <img
                 src="/assets/praveen-hingonia.jpg"
                 alt="Praveen Hingonia - Acting Mentor"
@@ -123,13 +157,13 @@ const AboutSection = () => {
               </p>
 
               {/* Achievement Grid */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-6 flex-grow">
                 {achievements.map((achievement, index) => {
                   const IconComponent = achievement.icon;
                   return (
-                    <div key={index} className="text-center">
+                    <div key={index} className="text-center flex flex-col items-center justify-center">
                       <div className="bg-blue-600/20 p-3 rounded-xl mx-auto w-fit mb-2">
-                        <IconComponent className="h-5 w-5 md:h-6 md:w-6 text-blue-400" />
+                        <IconComponent className="h-8 w-8 md:h-10 md:w-10 text-blue-400" />
                       </div>
                       <div className="text-2xl md:text-3xl font-bold text-white">
                         {achievement.number}
@@ -146,49 +180,6 @@ const AboutSection = () => {
               </div>
             </Card>
           </div>
-        </div>
-
-        {/* Unique Method Section */}
-        <div className="mt-20 text-center">
-          <Card className="bg-blue-50 shadow-md rounded-2xl p-12 md:p-16 max-w-4xl mx-auto">
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              My Unique Method — Character Decoding
-            </h3>
-            <p className="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
-              I've developed a proven approach to help actors quickly understand
-              their roles, connect emotionally, and perform naturally — without
-              years of expensive training.
-            </p>
-            <div className="grid md:grid-cols-3 gap-6 text-center">
-              <div>
-                <Brain className="h-12 w-12 md:h-14 md:w-14 mx-auto mb-4 text-blue-600" />
-                <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
-                  Decode
-                </h4>
-                <p className="text-sm md:text-base text-gray-600">
-                  Break down character psychology
-                </p>
-              </div>
-              <div>
-                <Heart className="h-12 w-12 md:h-14 md:w-14 mx-auto mb-4 text-blue-600" />
-                <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
-                  Connect
-                </h4>
-                <p className="text-sm md:text-base text-gray-600">
-                  Find emotional authenticity
-                </p>
-              </div>
-              <div>
-                <Star className="h-12 w-12 md:h-14 md:w-14 mx-auto mb-4 text-blue-600" />
-                <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
-                  Perform
-                </h4>
-                <p className="text-sm md:text-base text-gray-600">
-                  Deliver natural, compelling scenes
-                </p>
-              </div>
-            </div>
-          </Card>
         </div>
       </div>
       

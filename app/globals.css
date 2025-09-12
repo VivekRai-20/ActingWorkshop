@@ -234,6 +234,25 @@ All colors MUST be HSL.
   .animate-scroll-left-to-right {
     animation: scrollLeftToRight 30s linear infinite;
   }
+  
+  /* Fix for flex items to maintain equal height */
+  .flex-equal-height {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  /* Ensure cards maintain equal height in grid */
+  .grid-equal-height {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  
+  .grid-equal-height > * {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @keyframes fadeIn {
