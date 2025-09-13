@@ -209,7 +209,14 @@ const HeroSection = () => {
                   <img 
                     src="/assets/praveenHingoniaVision.png" 
                     alt="Praveen Hingonia Vision" 
-                    className="h-12 sm:h-16 md:h-20 w-auto object-contain"
+                    className="h-16 sm:h-20 md:h-24 w-auto object-contain"
+                  />
+                </div>
+                <div className="flex items-center justify-center p-1">
+                  <img 
+                    src="/assets/productions.png" 
+                    alt="Productions" 
+                    className="h-20 sm:h-24 md:h-28 w-auto object-contain"
                   />
                 </div>
               </div>

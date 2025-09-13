@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Play, MessageSquare } from "lucide-react";
+import { Play, MessageSquare, User } from "lucide-react";
 
 // Import chat screenshots
 // Note: Using public asset paths for Next.js
@@ -104,19 +104,25 @@ const TestimonialsSection = () => {
         <div className="mb-8">
           <div className="flex items-center justify-center mb-6">
             <MessageSquare className="h-6 w-6 text-blue-500 mr-2" />
-            <h3 className="text-2xl font-bold text-white">Chat Testimonials</h3>
+            <h3 className="text-4xl font-bold text-white">Testimonials</h3>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {chatTestimonials.map((chat, index) => (
               <Card
                 key={index}
                 className="overflow-hidden bg-neutral-900 border border-gray-700 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20"
               >
+                {/* Profile icon */}
+                <div className="flex items-center p-3 border-b border-gray-700">
+                  <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+                    <User className="h-6 w-6 text-white" />
+                  </div>
+                </div>
                 <div className="aspect-square w-full overflow-hidden">
                   <img
                     src={chat}
                     alt={`Chat testimonial ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               </Card>
