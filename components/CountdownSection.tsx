@@ -56,7 +56,7 @@ const CountdownSection = () => {
         {/* Workshop Dates */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
           <p className="text-blue-800 font-bold text-lg sm:text-xl">
-            Workshop Dates: September 26th, 27th & 29th, 2025
+            Workshop Dates: September 26th, 27th & 28th, 2025
           </p>
           <p className="text-blue-700 text-sm sm:text-base mt-1">
             Online Workshop - 10:00 AM IST Each Day

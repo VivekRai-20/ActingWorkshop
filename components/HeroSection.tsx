@@ -189,8 +189,8 @@ const HeroSection = () => {
                     <div className="text-blue-200 text-xs">10 AM</div>
                   </div>
                   <div className="bg-blue-800/50 rounded-lg p-2">
-                    <div className="text-white font-semibold text-xs sm:text-sm">Sep 29</div>
-                    <div className="text-blue-300 text-xs">Mon</div>
+                    <div className="text-white font-semibold text-xs sm:text-sm">Sep 28</div>
+                    <div className="text-blue-300 text-xs">Sun</div>
                     <div className="text-blue-200 text-xs">10 AM</div>
                   </div>
                 </div>
