@@ -111,7 +111,7 @@ function PaymentSuccessContent() {
               Connect with other participants and get updates
             </p>
             <a 
-              href="https://chat.whatsapp.com/CR4RKBEPUwR3Sj44Qf8oWx?mode=ems_wa_t"
+              href="https://chat.whatsapp.com/FnOfD7BmEma33wXokLyq4O?mode=ems_share_t "
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors font-medium"
