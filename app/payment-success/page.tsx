@@ -104,18 +104,20 @@ function PaymentSuccessContent() {
             </div>
           </div>
 
-          {/* Follow-up Message */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-            <h3 className="font-bold text-blue-800 mb-2">What's Next?</h3>
-            <p className="text-blue-700 mb-2">
-              You will be contacted by our team shortly. Stay tuned for further instructions!
+          {/* WhatsApp Group Link */}
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+            <h3 className="font-bold text-green-800 mb-2">Join Our WhatsApp Group</h3>
+            <p className="text-green-700 mb-3">
+              Connect with other participants and get updates
             </p>
-            <p className="text-blue-600 text-sm">
-              If you don't hear from us within 24 hours, please email us at{' '}
-              <a href="mailto:praveenhingoniavision@gmail.com" className="underline font-medium">
-                praveenhingoniavision@gmail.com
-              </a>
-            </p>
+            <a 
+              href="https://chat.whatsapp.com/CR4RKBEPUwR3Sj44Qf8oWx?mode=ems_wa_t"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors font-medium"
+            >
+              Join WhatsApp Group
+            </a>
           </div>
 
           {/* Action Buttons */}
