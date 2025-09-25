@@ -179,17 +179,17 @@ const HeroSection = () => {
                 </h3>
                 <div className="grid grid-cols-3 gap-2 text-center">
                   <div className="bg-blue-800/50 rounded-lg p-2">
-                    <div className="text-white font-semibold text-xs sm:text-sm">Sep 26</div>
+                    <div className="text-white font-semibold text-xs sm:text-sm">Oct 3</div>
                     <div className="text-blue-300 text-xs">Fri</div>
                     <div className="text-blue-200 text-xs">10 AM</div>
                   </div>
                   <div className="bg-blue-800/50 rounded-lg p-2">
-                    <div className="text-white font-semibold text-xs sm:text-sm">Sep 27</div>
+                    <div className="text-white font-semibold text-xs sm:text-sm">Oct 4</div>
                     <div className="text-blue-300 text-xs">Sat</div>
                     <div className="text-blue-200 text-xs">10 AM</div>
                   </div>
                   <div className="bg-blue-800/50 rounded-lg p-2">
-                    <div className="text-white font-semibold text-xs sm:text-sm">Sep 28</div>
+                    <div className="text-white font-semibold text-xs sm:text-sm">Oct 5</div>
                     <div className="text-blue-300 text-xs">Sun</div>
                     <div className="text-blue-200 text-xs">10 AM</div>
                   </div>
