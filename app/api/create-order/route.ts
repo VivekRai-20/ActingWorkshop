@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     console.log("Create order request received:", { amount, name, email, phone });
 
     const options = {
-      amount: amount || 199900, // Rs. 1999 in paise (discounted price)
+      amount: amount || 19900, // Rs. 199 in paise (discounted price)
       currency: "INR",
       receipt: `receipt_${Date.now()}`,
       notes: {

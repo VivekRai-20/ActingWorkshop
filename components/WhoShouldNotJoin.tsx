@@ -82,7 +82,7 @@ const WhoShouldNotJoin = () => {
       <CustomerDetailsForm
         isOpen={showDetailsForm}
         onClose={() => setShowDetailsForm(false)}
-        amount={29900}
+        amount={19900}
       />
     </section>
   );

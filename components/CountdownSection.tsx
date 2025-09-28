@@ -50,7 +50,7 @@ const CountdownSection = () => {
         </h3>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 uppercase leading-snug">
           FOR A SPECIAL <span className="text-blue-600">ONE-TIME PAYMENT</span>{" "}
-          OF JUST RS 299!
+          OF JUST RS 199!
         </h2>
         
         {/* Workshop Dates */}
@@ -100,7 +100,7 @@ const CountdownSection = () => {
       <CustomerDetailsForm
         isOpen={showDetailsForm}
         onClose={() => setShowDetailsForm(false)}
-        amount={29900}
+        amount={19900}
       />
     </section>
   );

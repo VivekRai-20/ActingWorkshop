@@ -24,7 +24,7 @@ A comprehensive React-based web application for an acting workshop featuring pay
 
 This project integrates Razorpay for secure payment processing:
 
-- Workshop fee: ₹2999 (₹1999 after discount)
+- Workshop fee: ₹199
 - Automatic invoice generation and email delivery
 - Payment confirmation with customer details collection
 

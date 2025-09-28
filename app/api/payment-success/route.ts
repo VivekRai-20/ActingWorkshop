@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
       console.log("Order details fetched:", orderDetails.id);
 
       const redirectUrl = `/payment-success?razorpay_payment_id=${razorpay_payment_id}&razorpay_order_id=${razorpay_order_id}&amount=${
-        orderDetails.amount || 199900
+        orderDetails.amount || 19900
       }`;
 
       return NextResponse.json({
@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         success: true,
         status: "ok",
-        redirectUrl: `/payment-success?razorpay_payment_id=${razorpay_payment_id}&razorpay_order_id=${razorpay_order_id}&amount=199900`,
+        redirectUrl: `/payment-success?razorpay_payment_id=${razorpay_payment_id}&razorpay_order_id=${razorpay_order_id}&amount=19900`,
       });
     }
   } catch (error) {

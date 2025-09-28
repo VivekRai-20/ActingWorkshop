@@ -31,7 +31,7 @@ export async function GET(
           customerName: 'Workshop Participant',
           customerEmail: 'customer@example.com',
           customerPhone: 'N/A',
-          amount: 199900, // ₹1999
+          amount: 19900, // ₹199
           date: new Date().toISOString().split('T')[0],
           workshopName: 'Character Decode Camp - 3-Day Acting Workshop'
         });
